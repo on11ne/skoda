@@ -21,6 +21,11 @@
  */
 class Users extends CActiveRecord
 {
+
+    const NOT_ACTIVATED = 0;
+    const NOT_MODERATED = 1;
+    const MODERATED = 2;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.

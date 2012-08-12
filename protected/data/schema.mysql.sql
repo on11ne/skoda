@@ -161,10 +161,24 @@ CREATE TABLE `tbl_companies` (
 );
 
 -- ---
+-- Table 'tbl_cities'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `tbl_cities`;
+		
+CREATE TABLE `tbl_cities` (
+  `id` TINYINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
 -- Foreign Keys 
 -- ---
 
 ALTER TABLE `tbl_users` ADD FOREIGN KEY (company) REFERENCES `tbl_companies` (`id`);
+ALTER TABLE `tbl_users` ADD FOREIGN KEY (city) REFERENCES `tbl_cities` (`id`);
 ALTER TABLE `tbl_feedback` ADD FOREIGN KEY (contest_id) REFERENCES `tbl_contests` (`id`);
 ALTER TABLE `tbl_contest_items` ADD FOREIGN KEY (contest_id) REFERENCES `tbl_contests` (`id`);
 ALTER TABLE `tbl_contest_items` ADD FOREIGN KEY (user_id) REFERENCES `tbl_users` (`id`);
@@ -183,6 +197,7 @@ ALTER TABLE `tbl_votes` ADD FOREIGN KEY (contest_item_id) REFERENCES `tbl_contes
 -- ALTER TABLE `tbl_videos` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `tbl_votes` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `tbl_companies` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `tbl_cities` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ---
 -- Test Data
@@ -205,4 +220,6 @@ ALTER TABLE `tbl_votes` ADD FOREIGN KEY (contest_item_id) REFERENCES `tbl_contes
 -- INSERT INTO `tbl_votes` (`id`,`source`,`contest_item_id`,`user_identity`,`created`) VALUES
 -- ('','','','','');
 -- INSERT INTO `tbl_companies` (`id`,`title`) VALUES
+-- ('','');
+-- INSERT INTO `tbl_cities` (`id`,`title`) VALUES
 -- ('','');

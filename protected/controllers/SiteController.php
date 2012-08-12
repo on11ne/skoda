@@ -98,6 +98,94 @@ class SiteController extends Controller
 		$this->render('login',array('model'=>$model));
 	}
 
+    public function actionRegister() {
+
+        $model=new RegisterForm;
+        $user = new Users;
+
+        // if it is ajax validation request
+        if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
+        // collect user input data
+        if(isset($_POST['RegisterForm']))
+        {
+            $model->attributes=$_POST['RegisterForm'];
+
+            $user->email = $model->email;
+            $user->password = $model->password;
+            $user->surname = $model->email;
+            $user->first_name = $model->first_name;
+            $user->last_name = $model->last_name;
+            $user->phone = $model->phone;
+            $user->company = $model->company;
+            $user->city = $model->city;
+            $user->position = $model->position;
+            $user->photo = $model->photo;
+            $user->activation = sha1(mt_rand(10000, 99999).time().$model->email);
+            $user->status = Users::NOT_ACTIVATED;
+
+            if($user->save()) {
+
+                $name='=?UTF-8?B?'.base64_encode("Сайт программы Шкода Нижний Новгород").'?=';
+                $subject='=?UTF-8?B?'.base64_encode("Активация учётной записи").'?=';
+                $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
+                    "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
+                    "MIME-Version: 1.0\r\n".
+                    "Content-type: text/plain; charset=UTF-8";
+
+                $activationLink = Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation));
+                $message = <<<EOT
+<html>
+<body>
+<h1>Активация учётной записи</h1>
+<p>Уважаемый(ая), {$user->first_name} {$user->surname}<br>,
+для активации вашей учетной записи необходимо перейти по ссылке:
+<a href="$activationLink">$activationLink</a></p>
+<p>______________<br/>
+Если вы не регистрировались на сайте, просто удалите это письмо.
+</p>
+EOT;
+
+                mail($model->email,$subject,$message,$headers);
+                /*
+                $identity=new UserIdentity($newUser->username,$model->password);
+                $identity->authenticate();
+                Yii::app()->user->login($identity,0);
+                //redirect the user to page he/she came from
+                $this->redirect(Yii::app()->user->returnUrl);
+                */
+
+            }
+
+        }
+        // display the register form
+        $this->render('register',array('model'=>$model));
+
+    }
+
+    public function actionActivate() {
+
+        if(empty($_GET['activation']))
+            throw new CHttpException(404, 'Not found');
+        else
+            $activation = $_GET['activation'];
+
+        $model = Users::model()->findByAttributes(array(
+            'activation' => $activation
+        ));
+
+        if ($model === null)
+            throw new CHttpException(404, 'Not found');
+        else
+            $model->status = Users::NOT_MODERATED;
+
+        $model->save();
+    }
+
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

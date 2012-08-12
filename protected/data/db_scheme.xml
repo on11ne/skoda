@@ -66,6 +66,7 @@
     </row>
     <row name="city" null="0" autoincrement="0">
         <datatype>TINYINT</datatype>
+        <relation table="tbl_cities" row="id" />
         <comment>references tbl_cities</comment>
     </row>
     <row name="position" null="0" autoincrement="0">
@@ -253,7 +254,18 @@
             <part>id</part>
         </key>
     </table>
-    <table x="1357" y="624" name="tbl_companies">
+    <table x="1357" y="599" name="tbl_companies">
+        <row name="id" null="0" autoincrement="1">
+            <datatype>TINYINT</datatype>
+        </row>
+        <row name="title" null="0" autoincrement="0">
+            <datatype>VARCHAR(255)</datatype>
+        </row>
+        <key type="PRIMARY" name="">
+            <part>id</part>
+        </key>
+    </table>
+    <table x="1357" y="696" name="tbl_cities">
         <row name="id" null="0" autoincrement="1">
             <datatype>TINYINT</datatype>
         </row>
