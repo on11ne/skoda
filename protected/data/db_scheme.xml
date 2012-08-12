@@ -61,6 +61,7 @@
     </row>
     <row name="company" null="0" autoincrement="0">
         <datatype>TINYINT</datatype>
+        <relation table="tbl_companies" row="id" />
         <comment>references tbl_companies</comment>
     </row>
     <row name="city" null="0" autoincrement="0">
@@ -75,7 +76,7 @@
     </row>
     <row name="activation" null="1" autoincrement="0">
         <datatype>VARCHAR(255)</datatype>
-    </row>
+        <default>NULL</default></row>
     <row name="status" null="1" autoincrement="0">
         <datatype>TINYINT</datatype>
         <default>0</default><comment>0 - not activated, 1 - not moderated, 2 - activated and moderated</comment>
@@ -90,7 +91,7 @@
     <table x="26" y="241" name="tbl_news">
         <row name="id" null="1" autoincrement="1">
             <datatype>TINYINT</datatype>
-        </row>
+            <default>NULL</default></row>
         <row name="title" null="0" autoincrement="0">
             <datatype>VARCHAR(255)</datatype>
         </row>
@@ -128,7 +129,7 @@
         </row>
         <row name="message" null="1" autoincrement="0">
             <datatype>MEDIUMTEXT</datatype>
-        </row>
+            <default>NULL</default></row>
         <row name="image" null="1" autoincrement="0">
             <datatype>VARCHAR(255)</datatype>
             <default>NULL</default></row>
@@ -175,13 +176,13 @@
         </row>
         <row name="full_text" null="1" autoincrement="0">
             <datatype>MEDIUMTEXT</datatype>
-        </row>
+            <default>NULL</default></row>
         <row name="images" null="1" autoincrement="0">
             <datatype>TINYINT</datatype>
-        </row>
+            <default>NULL</default></row>
         <row name="videos" null="1" autoincrement="0">
             <datatype>MEDIUMTEXT</datatype>
-        </row>
+            <default>NULL</default></row>
         <row name="contest_id" null="1" autoincrement="0">
             <datatype>TINYINT</datatype>
             <default>NULL</default><relation table="tbl_contests" row="id" />
@@ -247,6 +248,17 @@
         </row>
         <row name="created" null="0" autoincrement="0">
             <datatype>TIMESTAMP</datatype>
+        </row>
+        <key type="PRIMARY" name="">
+            <part>id</part>
+        </key>
+    </table>
+    <table x="1357" y="624" name="tbl_companies">
+        <row name="id" null="1" autoincrement="1">
+            <datatype>TINYINT</datatype>
+            <default>NULL</default></row>
+        <row name="title" null="0" autoincrement="0">
+            <datatype>VARCHAR</datatype>
         </row>
         <key type="PRIMARY" name="">
             <part>id</part>
