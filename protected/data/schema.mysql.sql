@@ -25,7 +25,7 @@ CREATE TABLE `tbl_users` (
   `city` TINYINT NOT NULL COMMENT 'references tbl_cities',
   `position` VARCHAR(255) NOT NULL,
   `photo` VARCHAR(255) NOT NULL,
-  `activation` VARCHAR(255) NULL,
+  `activation` VARCHAR(255) NULL DEFAULT NULL,
   `status` TINYINT NULL DEFAULT 0 COMMENT '0 - not activated, 1 - not moderated, 2 - activated and mode',
   `registered_date` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`)
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_users` (
 DROP TABLE IF EXISTS `tbl_news`;
 		
 CREATE TABLE `tbl_news` (
-  `id` TINYINT NULL AUTO_INCREMENT,
+  `id` TINYINT NULL AUTO_INCREMENT DEFAULT NULL,
   `title` VARCHAR(255) NOT NULL,
   `teaser_text` MEDIUMTEXT NULL DEFAULT NULL,
   `teaser_image` TINYINT NULL DEFAULT NULL COMMENT 'references tbl_images',
@@ -60,7 +60,7 @@ CREATE TABLE `tbl_feedback` (
   `id` TINYINT NOT NULL AUTO_INCREMENT,
   `user_id` TINYINT NOT NULL COMMENT 'references tbl_users',
   `theme` VARCHAR(255) NOT NULL,
-  `message` MEDIUMTEXT NULL,
+  `message` MEDIUMTEXT NULL DEFAULT NULL,
   `image` VARCHAR(255) NULL DEFAULT NULL,
   `created` TIMESTAMP NOT NULL,
   `status` TINYINT NOT NULL DEFAULT 0 COMMENT '0 - not processed, 1 - processed',
@@ -93,9 +93,9 @@ DROP TABLE IF EXISTS `tbl_contest_items`;
 CREATE TABLE `tbl_contest_items` (
   `id` TINYINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `full_text` MEDIUMTEXT NULL,
-  `images` TINYINT NULL,
-  `videos` MEDIUMTEXT NULL,
+  `full_text` MEDIUMTEXT NULL DEFAULT NULL,
+  `images` TINYINT NULL DEFAULT NULL,
+  `videos` MEDIUMTEXT NULL DEFAULT NULL,
   `contest_id` TINYINT NULL DEFAULT NULL,
   `user_id` TINYINT NOT NULL,
   `status` TINYINT NULL DEFAULT 0 COMMENT '0 - not moderated, 1 - moderated',
@@ -148,9 +148,23 @@ CREATE TABLE `tbl_votes` (
 );
 
 -- ---
+-- Table 'tbl_companies'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `tbl_companies`;
+		
+CREATE TABLE `tbl_companies` (
+  `id` TINYINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
 -- Foreign Keys 
 -- ---
 
+ALTER TABLE `tbl_users` ADD FOREIGN KEY (company) REFERENCES `tbl_companies` (`id`);
 ALTER TABLE `tbl_feedback` ADD FOREIGN KEY (contest_id) REFERENCES `tbl_contests` (`id`);
 ALTER TABLE `tbl_contest_items` ADD FOREIGN KEY (contest_id) REFERENCES `tbl_contests` (`id`);
 ALTER TABLE `tbl_contest_items` ADD FOREIGN KEY (user_id) REFERENCES `tbl_users` (`id`);
@@ -168,6 +182,7 @@ ALTER TABLE `tbl_votes` ADD FOREIGN KEY (contest_item_id) REFERENCES `tbl_contes
 -- ALTER TABLE `tbl_images` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `tbl_videos` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `tbl_votes` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `tbl_companies` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ---
 -- Test Data
@@ -189,3 +204,5 @@ ALTER TABLE `tbl_votes` ADD FOREIGN KEY (contest_item_id) REFERENCES `tbl_contes
 -- ('','','');
 -- INSERT INTO `tbl_votes` (`id`,`source`,`contest_item_id`,`user_identity`,`created`) VALUES
 -- ('','','','','');
+-- INSERT INTO `tbl_companies` (`id`,`title`) VALUES
+-- ('','');
