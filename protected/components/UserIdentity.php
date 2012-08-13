@@ -15,7 +15,6 @@ class UserIdentity extends CUserIdentity
 	 */
 
     private $_id;
-    private $salt = 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-';
 
 	public function authenticate() {
 
@@ -23,7 +22,7 @@ class UserIdentity extends CUserIdentity
 
         if($record === null)
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        else if($record->password!==md5($this->password . $this->salt))
+        else if($record->password!==md5($this->password . Yii::app()->params['salt']))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else {
             $this->_id=$record->id;

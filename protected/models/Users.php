@@ -52,9 +52,25 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, password, first_name, surname, last_name, phone, company, city, position, photo, registered_date', 'required'),
-			array('company, city, status', 'numerical', 'integerOnly'=>true),
-			array('email, password, first_name, surname, last_name, phone, position, photo, activation', 'length', 'max'=>255),
+            array('email, password, first_name, surname, last_name, phone, company, city, position, photo', 'required'),
+
+            array('email', 'email'),
+            array('email', 'length', "min"=>3, "max"=>32),
+            array('email', 'unique', 'className' => 'Users'),
+
+            array('password', 'match', 'pattern'=>'/^([a-z0-9_])+$/i'),
+
+            array('first_name', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
+            array('surname', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
+            array('last_name', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
+
+            array('phone', 'match', 'pattern'=>'/^([+]?[0-9 ]+){11,15}$/'),
+
+            array('company', 'exist', 'className' => 'Companies', 'attributeName' => 'id'),
+
+            array('city', 'exist', 'className' => 'Cities', 'attributeName' => 'id'),
+
+            array('position', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, email, password, first_name, surname, last_name, phone, company, city, position, photo, activation, status, registered_date', 'safe', 'on'=>'search'),

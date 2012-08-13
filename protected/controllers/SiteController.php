@@ -100,32 +100,24 @@ class SiteController extends Controller
 
     public function actionRegister() {
 
-        $model=new RegisterForm;
         $user = new Users;
 
         // if it is ajax validation request
         if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
         {
-            echo CActiveForm::validate($model);
+            echo CActiveForm::validate($user);
             Yii::app()->end();
         }
 
         // collect user input data
-        if(isset($_POST['RegisterForm']))
+        if(isset($_POST['Users']))
         {
-            $model->attributes=$_POST['RegisterForm'];
+            $user->attributes = $_POST['Users'];
 
-            $user->email = $model->email;
-            $user->password = $model->password;
-            $user->surname = $model->email;
-            $user->first_name = $model->first_name;
-            $user->last_name = $model->last_name;
-            $user->phone = $model->phone;
-            $user->company = $model->company;
-            $user->city = $model->city;
-            $user->position = $model->position;
-            $user->photo = $model->photo;
-            $user->activation = sha1(mt_rand(10000, 99999).time().$model->email);
+            //var_dump($user->attributes);
+
+            $user->activation = sha1(mt_rand(10000, 99999) . time() . $user->email);
+            $user->password = md5($user->password . Yii::app()->params['salt']);
             $user->status = Users::NOT_ACTIVATED;
 
             if($user->save()) {
@@ -135,7 +127,7 @@ class SiteController extends Controller
                 $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
                     "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
                     "MIME-Version: 1.0\r\n".
-                    "Content-type: text/plain; charset=UTF-8";
+                    "Content-type: text/html; charset=UTF-8";
 
                 $activationLink = Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation));
                 $message = <<<EOT
@@ -150,7 +142,7 @@ class SiteController extends Controller
 </p>
 EOT;
 
-                mail($model->email,$subject,$message,$headers);
+                mail($user->email,$subject,$message,$headers);
                 /*
                 $identity=new UserIdentity($newUser->username,$model->password);
                 $identity->authenticate();
@@ -159,11 +151,14 @@ EOT;
                 $this->redirect(Yii::app()->user->returnUrl);
                 */
 
+            } else {
+                var_dump($user->getErrors());
             }
 
         }
         // display the register form
-        $this->render('register',array('model'=>$model));
+
+        $this->render('register', array('model' => $user));
 
     }
 
@@ -183,7 +178,12 @@ EOT;
         else
             $model->status = Users::NOT_MODERATED;
 
-        $model->save();
+        if($model->save())
+            Yii::app()->user->setFlash('success', "Учётная запись успешно активирована!");
+        else
+            Yii::app()->user->setFlash('error', "Ошибка активации учётной записи");
+
+        $this->redirect(array('site/index'));
     }
 
 	/**

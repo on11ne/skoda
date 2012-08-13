@@ -26,28 +26,7 @@ class RegisterForm extends CFormModel
      */
     public function rules()
     {
-        return array(
-            array('email', 'required'),
-            array('email', 'email'),
-            array('email', 'length', "min"=>3, "max"=>32),
-            array('email', 'unique', 'className' => 'Users'),
-
-            array('password', 'match', 'pattern'=>'/^([a-z0-9_])+$/i'),
-
-            array('first_name', 'match', 'pattern'=>'/^([а-яА-Я\s]){3,32}$/i'),
-            array('surname', 'match', 'pattern'=>'/^([а-яА-Я\s]){3,32}$/i'),
-            array('last_name', 'match', 'pattern'=>'/^([а-яА-Я\s]){3,32}$/i'),
-
-            array('phone', 'match', 'pattern'=>'/^([+]?[0-9 ]+){11,15}$/'),
-
-            array('company', 'exist', 'className' => 'Companies'),
-
-            array('city', 'exist', 'className' => 'Cities'),
-
-            array('position', 'match', 'pattern'=>'/^([а-яА-Я\s-]){3,32}$/i'),
-
-            array('photo', 'file', 'allowEmpty' => false, 'maxSize' => 3000000, 'types' => 'gif,jpg,jpeg,png')
-        );
+        return array();
     }
 
     /**

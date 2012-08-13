@@ -25,7 +25,7 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'dfa-98+_(',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('188.123.245.147','::1'),
+			'ipFilters'=>array('127.0.0.1','192.168.7.148'),
 		),
 	),
 
@@ -52,10 +52,10 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=u337133.mysql.masterhost.ru;dbname=u337133_skoda',
+			'connectionString' => 'mysql:host=localhost;dbname=skoda',
 			'emulatePrepare' => true,
-			'username' => 'u337133_skoda',
-			'password' => 'ingenom7ssan',
+			'username' => 'root',
+			'password' => 'qwerty',
 			'charset' => 'utf8',
 		),
 
@@ -85,5 +85,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+        'salt' => 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-'
 	),
 );
