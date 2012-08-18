@@ -6,6 +6,8 @@
  * The followings are the available columns in table 'tbl_images':
  * @property integer $id
  * @property string $path
+ * @property integer $user_id
+ * @property string $thumb_path
  * @property string $created
  */
 class Images extends CActiveRecord
@@ -36,7 +38,7 @@ class Images extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('path, created', 'required'),
+			array('user_id, path, thumb_path', 'required'),
 			array('path', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -62,8 +64,10 @@ class Images extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'path' => 'Path',
-			'created' => 'Created',
+			'path' => 'Путь',
+			'created' => 'Создан',
+            'user_id' => 'Пользователь',
+            'thumb_path' => 'Путь до превью'
 		);
 	}
 

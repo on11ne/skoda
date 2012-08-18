@@ -21,6 +21,7 @@ return array(
         'ext.lightopenid.*',
         'ext.eauth.*',
         'ext.eauth.services.*',
+        'application.helpers.*',
 	),
 
 	'modules'=>array(
@@ -88,9 +89,6 @@ return array(
 			),
 		),
 		*/
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
@@ -139,6 +137,13 @@ return array(
                 ),
             ),
         ),
+        'image'=>array(
+            'class'=>'application.extensions.image.CImageComponent',
+            // GD or ImageMagick
+            'driver'=>'GD',
+            // ImageMagick setup path
+            'params'=>array('directory'=>'/opt/local/bin'),
+        ),
 	),
 
 	// application-level parameters that can be accessed
@@ -148,6 +153,7 @@ return array(
 		'adminEmail' => 'webmaster@skoda.ru',
         'adminName' => 'Сайт мотивационной программы Шкода Нижний Новгород',
         'moderatorEmail' => 'denis@ekimov.su',
-        'salt' => 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-'
+        'salt' => 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-',
+        'contest_id' => 1
 	),
 );

@@ -11,9 +11,13 @@ return array(
 
 	// application components
 	'components'=>array(
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+        'db'=>array(
+            'connectionString' => 'mysql:host=localhost;dbname=skoda',
+            'emulatePrepare' => true,
+            'username' => 'root',
+            'password' => 'qwerty',
+            'charset' => 'utf8',
+        ),
 		// uncomment the following to use a MySQL database
 		/*
 		'db'=>array(

@@ -2,6 +2,42 @@
 
 class VotesController extends Controller
 {
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+        );
+    }
+
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                'actions'=>array('index','view'),
+                'users'=>array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions'=>array('create','update', 'add'),
+                'users'=>array('@'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions'=>array('admin','delete'),
+                'users'=>array('admin'),
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
+
 	public function actionAdd()
 	{
         $service = Yii::app()->request->getQuery('service');
@@ -10,7 +46,7 @@ class VotesController extends Controller
 
             $authIdentity = Yii::app()->eauth->getIdentity($service);
             $authIdentity->redirectUrl = Yii::app()->user->returnUrl;
-            $authIdentity->cancelUrl = $this->createAbsoluteUrl('site/login');
+            $authIdentity->cancelUrl = $this->createAbsoluteUrl('site/index');
 
             if ($authIdentity->authenticate()) {
                 $identity = new EAuthUserIdentity($authIdentity);
@@ -19,7 +55,7 @@ class VotesController extends Controller
                 if ($identity->authenticate()) {
 
                     $vote = new Votes();
-                    $vote->contest_item_id = 1;
+                    $vote->contest_item_id = Yii::app()->request->getParam('contest_item_id', 0);
                     $vote->source = $service;
                     $vote->user_identity = $identity->getId();
 

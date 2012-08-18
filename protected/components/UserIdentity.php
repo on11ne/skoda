@@ -20,10 +20,14 @@ class UserIdentity extends CUserIdentity
 
         $record = Users::model()->findByAttributes(array('email' => $this->username));
 
+        var_dump(md5($this->password . Yii::app()->params['salt']));
+
         if($record === null)
             $this->errorCode = self::ERROR_USERNAME_INVALID;
         else if($record->password!==md5($this->password . Yii::app()->params['salt']))
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        else if($record->status != 2)
+            $this->errorCode=self::ERROR_UNKNOWN_IDENTITY;
         else {
             $this->_id=$record->id;
             $this->setState('surname', $record->surname);

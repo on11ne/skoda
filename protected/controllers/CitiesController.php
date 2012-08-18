@@ -1,6 +1,6 @@
 <?php
 
-class CompaniesController extends Controller
+class CitiesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -15,6 +15,7 @@ class CompaniesController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -27,7 +28,7 @@ class CompaniesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'autoCompleteLookup'),
+				'actions'=>array('index', 'view', 'autoCompleteLookup'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,7 +44,6 @@ class CompaniesController extends Controller
 			),
 		);
 	}
-
 
     public function actionAutoCompleteLookup()
     {
@@ -62,14 +62,14 @@ class CompaniesController extends Controller
             $criteria->params = array(":title"=>"%$title%");
             $criteria->limit = $limit;
 
-            $companiesArray = Companies::model()->findAll($criteria);
+            $citiesArray = Cities::model()->findAll($criteria);
 
             $returnVal = '';
 
-            foreach($companiesArray as $company)
+            foreach($citiesArray as $city)
             {
-                $returnVal .= $company->getAttribute('title').'|'
-                    .$company->getAttribute('id')."\n";
+                $returnVal .= $city->getAttribute('title').'|'
+                    .$city->getAttribute('id')."\n";
             }
 
             echo $returnVal;
@@ -93,14 +93,14 @@ class CompaniesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Companies;
+		$model=new Cities;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']))
+		if(isset($_POST['Cities']))
 		{
-			$model->attributes=$_POST['Companies'];
+			$model->attributes=$_POST['Cities'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -122,9 +122,9 @@ class CompaniesController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']))
+		if(isset($_POST['Cities']))
 		{
-			$model->attributes=$_POST['Companies'];
+			$model->attributes=$_POST['Cities'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -141,17 +141,11 @@ class CompaniesController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -159,7 +153,7 @@ class CompaniesController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Companies');
+		$dataProvider=new CActiveDataProvider('Cities');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -170,10 +164,10 @@ class CompaniesController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Companies('search');
+		$model=new Cities('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Companies']))
-			$model->attributes=$_GET['Companies'];
+		if(isset($_GET['Cities']))
+			$model->attributes=$_GET['Cities'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -187,7 +181,7 @@ class CompaniesController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Companies::model()->findByPk($id);
+		$model=Cities::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -199,7 +193,7 @@ class CompaniesController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='companies-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='cities-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

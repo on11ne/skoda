@@ -39,11 +39,11 @@ class Votes extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('source, contest_item_id, user_identity', 'required'),
-			array('contest_item_id', 'numerical', 'integerOnly'=>true),
-			array('source', 'length', 'max'=>20),
+
+			array('contest_item_id', 'exist', 'className' => 'ContestItems', 'attributeName' => 'id'),
+            array('source', 'in', 'range' => array('facebook', 'vkontakte')),
 			array('user_identity', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
+
 			array('id, source, contest_item_id, user_identity, created', 'safe', 'on'=>'search'),
 		);
 	}
@@ -66,10 +66,10 @@ class Votes extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'source' => 'Source',
-			'contest_item_id' => 'Contest Item',
-			'user_identity' => 'User Identity',
-			'created' => 'Created',
+			'source' => 'Социальная сеть',
+			'contest_item_id' => 'Конкурсная работа',
+			'user_identity' => 'ID пользователья',
+			'created' => 'Добавлен',
 		);
 	}
 

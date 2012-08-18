@@ -406,3 +406,459 @@ Stack trace:
 REQUEST_URI=/index.php?r=votes/add&service=facebook&redirect_uri=http%3A%2F%2Fskoda.local%2Findex.php%3Fr%3Dvotes%2Fadd%26service%3Dfacebook&js
 HTTP_REFERER=http://skoda.local/index.php
 ---
+2012/08/18 19:35:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'skoda'' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(624): CApplication->getDb()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(2311): CActiveRecord->getDbConnection()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(Votes))
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(403): CActiveRecord::model('Votes')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\VotesController.php(21): CActiveRecord->__construct()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): VotesController->actionAdd()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('votes/add')
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\Workspace\skoda.ru\Development\server\skoda\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/index.php?r=votes%2Fadd&service=facebook&code=AQDFXOw5Ijqhzkcv9uCgUgarXAGu1cnOmeMDDUgPp7PZnjSRq2LSbh3LH0WALj8C0_VaaDfC2ZGV2HOW93ila4_vc3tZdPXtN9mn9Xxz71JNZmBtl1T3PTHk-ou0XkfdTqsduKxKAyF1Q13WZTAC0xR9DfPtZNgo3GLdy4OSIa3_7Hylw5YFQo9ggRmvd-QtOl4
+HTTP_REFERER=http://skoda.local/
+---
+2012/08/18 20:16:49 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'skoda.tbl_migration' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `tbl_migration`.
+2012/08/18 20:16:53 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tynyint' at line 1. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tynyint.
+2012/08/18 20:16:53 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tynyint' at line 1. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tynyint' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1304): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(282): CDbCommand->addColumn('tbl_images', 'user_id', 'tynyint')
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(7): CDbMigration->addColumn('tbl_images', 'user_id', 'tynyint')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:17:55 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tynyint' at line 1. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tynyint.
+2012/08/18 20:17:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tynyint' at line 1. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tynyint' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1304): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(282): CDbCommand->addColumn('tbl_images', 'user_id', 'tynyint')
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(7): CDbMigration->addColumn('tbl_images', 'user_id', 'tynyint')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:18:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_16' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_images` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`).
+2012/08/18 20:18:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_16' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_images` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1362): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(344): CDbCommand->addForeignKey('user_id', 'tbl_images', 'user_id', 'tbl_users', 'id', NULL, NULL)
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(11): CDbMigration->addForeignKey('user_id', 'tbl_images', 'user_id', 'tbl_users', 'id')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:18:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'user_id'. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tinyint.
+2012/08/18 20:18:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'user_id'. The SQL statement executed was: ALTER TABLE `tbl_images` ADD `user_id` tinyint' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1304): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(282): CDbCommand->addColumn('tbl_images', 'user_id', 'tinyint')
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(7): CDbMigration->addColumn('tbl_images', 'user_id', 'tinyint')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:19:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_18' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`).
+2012/08/18 20:19:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_18' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1362): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(344): CDbCommand->addForeignKey('user_id', 'tbl_videos', 'user_id', 'tbl_users', 'id', NULL, NULL)
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(11): CDbMigration->addForeignKey('user_id', 'tbl_videos', 'user_id', 'tbl_users', 'id')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:20:23 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_1c' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`).
+2012/08/18 20:20:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6e4_1c' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`)' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1362): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(344): CDbCommand->addForeignKey('user_id', 'tbl_videos', 'user_id', 'tbl_users', 'id', NULL, NULL)
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120818_161213_add_user_id_to_images_and_videos.php(11): CDbMigration->addForeignKey('user_id', 'tbl_videos', 'user_id', 'tbl_users', 'id')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120818_161213_add_user_id_to_images_and_videos->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120818_161213_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/18 20:26:44 [error] [php] Undefined variable: model (C:\Workspace\skoda.ru\Development\server\skoda\protected\views\contest_items\add.php:16)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): ContestitemsController->renderFile()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): ContestitemsController->renderPartial()
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(7): ContestitemsController->render()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(287): ContestitemsController->runAction()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\views\contest_items\add.php (16)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (7)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (13)
+2012/08/18 20:43:41 [error] [exception.CException] exception 'CException' with message 'Property "CActiveForm.enctype" is not defined.' in C:\Workspace\skoda.ru\Development\server\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWidgetFactory.php(162): CComponent->__set('enctype', 'multipart/form-...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(147): CWidgetFactory->createWidget(Object(ContestitemsController), 'CActiveForm', Array)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(190): CBaseController->createWidget('CActiveForm', Array)
+#3 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\contest_items\add.php(13): CBaseController->beginWidget('CActiveForm', Array)
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', Array, true)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', Array, true)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('//contest_items...', Array, true)
+#8 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(8): CController->render('//contest_items...', Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+---
+2012/08/18 21:25:05 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\Workspace\skoda.ru\Development\server\yii\framework\YiiBase.php:423)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\CompaniesController.php(65): spl_autoload_call()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): CompaniesController->actionAutoCompleteLookup()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CompaniesController->runAction()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CompaniesController->filterAccessControl()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CompaniesController->runActionWithFilters()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CompaniesController->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=companies/autoCompleteLookup&q=%D1%81%D1%82%D1%83%D0%B4%D0%B8%D1%8F&limit=10&timestamp=1345310705151
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\CompaniesController.php (65)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 21:50:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CCaptchaAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('captcha')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/captcha')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/captcha&v=502fd5e2a28a1
+HTTP_REFERER=http://skoda.local/index.php?r=site/contact
+---
+2012/08/18 21:50:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CCaptchaAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('captcha')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/captcha')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/captcha&v=502fd5e2a28a1
+HTTP_REFERER=http://skoda.local/index.php?r=site/contact
+---
+2012/08/18 21:50:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CViewAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('page')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/page')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/page&view=about
+HTTP_REFERER=http://skoda.local/index.php?r=site/contact
+---
+2012/08/18 23:13:17 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.image.CImageComponent" is invalid. Make sure it points to an existing PHP file and the file is readable.' in C:\Workspace\skoda.ru\Development\server\yii\framework\YiiBase.php:318
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\YiiBase.php(198): YiiBase::import('application.ext...', true)
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CModule.php(387): YiiBase::createComponent(Array)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CModule.php(104): CModule->getComponent('image')
+#3 C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php(95): CModule->__get('image')
+#4 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(60): ContestItems->processImages()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#18 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/18 23:14:03 [error] [exception.CException] exception 'CException' with message 'image type not allowed' in C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\drivers\GD.php:71
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php(334): Image_GD_Driver->process(Array, Array, 'C:/Workspace/sk...', '136ece324f8c905...')
+#1 C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php(101): Image->save()
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(60): ContestItems->processImages()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/18 23:23:04 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:69)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (69)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 23:24:15 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:71)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (71)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 23:25:33 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:69)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (69)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 23:25:51 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:69)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (69)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 23:29:26 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:68)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (68)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/18 23:32:01 [error] [php] mkdir(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php:68)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (68)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 00:05:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "contest_items/add".' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contest_items/a...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=contest_items/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/19 00:05:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "contest_items/add".' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contest_items/a...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=contest_items/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/19 00:13:42 [error] [php] chmod(): No such file or directory (C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php:339)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(60): ContestItems->processImages()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php (339)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (111)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php (60)
+2012/08/19 00:54:24 [error] [exception.CException] exception 'CException' with message 'image file not found' in C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php:78
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\CImageComponent.php(41): Image->__construct('C:/Workspace/sk...', Array)
+#1 C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php(100): CImageComponent->load('C:/Workspace/sk...')
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(60): ContestItems->processImages()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
