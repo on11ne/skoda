@@ -122,27 +122,21 @@ class SiteController extends Controller
 
             if($user->save()) {
 
-                $name='=?UTF-8?B?'.base64_encode("Сайт программы Шкода Нижний Новгород").'?=';
+                $name='=?UTF-8?B?'.base64_encode(Yii::app()->params['adminName']).'?=';
                 $subject='=?UTF-8?B?'.base64_encode("Активация учётной записи").'?=';
                 $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
                     "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
                     "MIME-Version: 1.0\r\n".
                     "Content-type: text/html; charset=UTF-8";
 
-                $activationLink = Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation));
-                $message = <<<EOT
-<html>
-<body>
-<h1>Активация учётной записи</h1>
-<p>Уважаемый(ая), {$user->first_name} {$user->surname}<br>,
-для активации вашей учетной записи необходимо перейти по ссылке:
-<a href="$activationLink">$activationLink</a></p>
-<p>______________<br/>
-Если вы не регистрировались на сайте, просто удалите это письмо.
-</p>
-EOT;
+                $message = $this->renderPartial('//messages/registration', array('data' => array(
+                    'first_name' => $user->first_name,
+                    'surname' => $user->surname,
+                    'activationLink' => Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation))
+                )), true);
 
-                mail($user->email,$subject,$message,$headers);
+                if(mail($user->email,$subject,$message,$headers))
+                    Yii::app()->user->setFlash('success', "Спасибо!<br/>На ваш адрес электронной почты отправлено сообщение с деталями активации");
                 /*
                 $identity=new UserIdentity($newUser->username,$model->password);
                 $identity->authenticate();
@@ -178,8 +172,22 @@ EOT;
         else
             $model->status = Users::NOT_MODERATED;
 
-        if($model->save())
+        if($model->save()) {
             Yii::app()->user->setFlash('success', "Учётная запись успешно активирована!");
+
+            $name='=?UTF-8?B?'.base64_encode(Yii::app()->params['adminName']).'?=';
+            $subject='=?UTF-8?B?'.base64_encode("Регистрация нового пользователя").'?=';
+            $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
+                "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
+                "MIME-Version: 1.0\r\n".
+                "Content-type: text/html; charset=UTF-8";
+
+            $message = $this->renderPartial('//messages/new_user', array('data' => $model), true);
+
+            if(mail(Yii::app()->params['moderatorEmail'], $subject, $message, $headers))
+                Yii::app()->user->setFlash('success', "Ваша учётная запись успешно активирована!");
+
+        }
         else
             Yii::app()->user->setFlash('error', "Ошибка активации учётной записи");
 
@@ -189,8 +197,8 @@ EOT;
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
-	public function actionLogout()
-	{
+	public function actionLogout() {
+
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}

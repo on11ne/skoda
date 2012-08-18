@@ -4,7 +4,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
-
+    <?php
+        Yii::app()->clientScript->registerCoreScript('jquery');
+        Yii::app()->clientScript->registerPackage('fancybox');
+        Yii::app()->clientScript->registerScriptFile('/assets/js/flash-messages.js', CClientScript::POS_BEGIN);
+    ?>
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
@@ -19,6 +23,16 @@
 </head>
 
 <body>
+
+<?php
+
+$flashMessages = Yii::app()->user->getFlashes();
+
+if ($flashMessages)
+    foreach($flashMessages as $key => $message)
+        echo '<div class="' . $key . '" style="display:none;">' . $message . "</div>\n";
+
+?>
 
 <div class="container" id="page">
 

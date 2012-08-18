@@ -16,6 +16,11 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'ext.eoauth.*',
+        'ext.eoauth.lib.*',
+        'ext.lightopenid.*',
+        'ext.eauth.*',
+        'ext.eauth.services.*',
 	),
 
 	'modules'=>array(
@@ -31,6 +36,43 @@ return array(
 
 	// application components
 	'components'=>array(
+        'loid' => array(
+            'class' => 'ext.lightopenid.loid',
+        ),
+        'eauth' => array(
+            'class' => 'ext.eauth.EAuth',
+            'popup' => true, // Use the popup window instead of redirecting.
+            'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache'.
+            'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
+            'services' => array( // You can change the providers and their classes.
+                'facebook' => array(
+                    // register your app here: https://developers.facebook.com/apps/
+                    'class' => 'FacebookOAuthService',
+                    'client_id' => '273754669405205',
+                    'client_secret' => 'fb932f67e076760bba15ab820012b210',
+                ),
+                'vkontakte' => array(
+                    // register your app here: https://vk.com/editapp?act=create&site=1
+                    'class' => 'VKontakteOAuthService',
+                    'client_id' => '3083076',
+                    'client_secret' => '3Q7gmzHm2TopKKpZ5nPT',
+                ),
+                /*'mailru' => array(
+                    // register your app here: http://api.mail.ru/sites/my/add
+                    'class' => 'MailruOAuthService',
+                    'client_id' => '...',
+                    'client_secret' => '...',
+                ),
+                'odnoklassniki' => array(
+                    // register your app here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
+                    'class' => 'OdnoklassnikiOAuthService',
+                    'client_id' => '...',
+                    'client_public' => '...',
+                    'client_secret' => '...',
+                    'title' => 'Odnokl.',
+                ),*/
+            ),
+        ),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -78,13 +120,34 @@ return array(
 				*/
 			),
 		),
+        'clientScript'=>array(
+            'packages'=>array(
+                'fancybox' => array(
+                    'baseUrl'=>'/assets/fancybox',
+                    'js' => array(
+                        'source/jquery.fancybox.pack.js',
+                        'lib/jquery.mousewheel-3.0.6.pack.js',
+                        'source/helpers/jquery.fancybox-buttons.js',
+                        'source/helpers/jquery.fancybox-media.js',
+                        'source/helpers/jquery.fancybox-thumbs.js',
+                    ),
+                    'css' => array(
+                        'source/jquery.fancybox.css',
+                        'source/jquery.fancybox-buttons.css',
+                        'source/jquery.fancybox-thumbs.css',
+                    ),
+                ),
+            ),
+        ),
 	),
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail' => 'webmaster@skoda.ru',
+        'adminName' => 'Сайт мотивационной программы Шкода Нижний Новгород',
+        'moderatorEmail' => 'denis@ekimov.su',
         'salt' => 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-'
 	),
 );

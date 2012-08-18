@@ -264,3 +264,145 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/register
 in C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php (145)
 in C:\WorkSpace\actual\skoda\Development\skoda\index.php (13)
+2012/08/17 14:12:10 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "messages/registration".' in C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php:879
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php(136): CController->renderPartial('messages/regist...', Array)
+#1 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionRegister()
+#2 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): CController->run('register')
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/register')
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/register
+HTTP_REFERER=http://skoda.local/index.php?r=site/register
+---
+2012/08/17 14:13:59 [error] [php] Trying to get property of non-object (C:\WorkSpace\actual\skoda\Development\skoda\protected\views\messages\registration.php:4)
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(870): SiteController->renderFile()
+#1 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php(136): SiteController->renderPartial()
+#2 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionRegister()
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): SiteController->runAction()
+#5 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): SiteController->run()
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/register
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\views\messages\registration.php (4)
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php (136)
+in C:\WorkSpace\actual\skoda\Development\skoda\index.php (13)
+2012/08/17 15:46:39 [error] [exception.CException] exception 'CException' with message 'Alias "ext.eauth.EAuthWidget" is invalid. Make sure it points to an existing PHP file.' in C:\WorkSpace\actual\skoda\Development\yii\framework\YiiBase.php:318
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWidgetFactory.php(147): YiiBase::import('ext.eauth.EAuth...', true)
+#1 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(147): CWidgetFactory->createWidget(Object(SiteController), 'ext.eauth.EAuth...', Array)
+#2 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(173): CBaseController->createWidget('ext.eauth.EAuth...', Array)
+#3 C:\WorkSpace\actual\skoda\Development\skoda\protected\views\site\index.php(5): CBaseController->widget('ext.eauth.EAuth...', Array)
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(127): require('C:\WorkSpace\ac...')
+#5 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\WorkSpace\ac...', NULL, true)
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\WorkSpace\ac...', NULL, true)
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#8 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php(32): CController->render('index')
+#9 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#10 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): CController->run('')
+#14 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('')
+#15 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/
+---
+2012/08/17 15:47:12 [error] [php] include(FacebookOAuthService.php): failed to open stream: No such file or directory (C:\WorkSpace\actual\skoda\Development\yii\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php(112): spl_autoload_call()
+#1 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php(56): EAuth->getIdentity()
+#2 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuthWidget.php(56): EAuth->getServices()
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(148): EAuthWidget->init()
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(173): SiteController->createWidget()
+#5 C:\WorkSpace\actual\skoda\Development\skoda\protected\views\site\index.php(5): SiteController->widget()
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(127): require()
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(96): SiteController->renderInternal()
+#8 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(870): SiteController->renderFile()
+#9 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(783): SiteController->renderPartial()
+#10 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php(32): SiteController->render()
+#11 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#12 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#13 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): SiteController->runAction()
+#14 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#15 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): SiteController->run()
+#16 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#17 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php (112)
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php (56)
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuthWidget.php (56)
+2012/08/17 15:49:08 [error] [php] include(FacebookOAuthService.php): failed to open stream: No such file or directory (C:\WorkSpace\actual\skoda\Development\yii\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php(112): spl_autoload_call()
+#1 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php(56): EAuth->getIdentity()
+#2 C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuthWidget.php(56): EAuth->getServices()
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(148): EAuthWidget->init()
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(173): SiteController->createWidget()
+#5 C:\WorkSpace\actual\skoda\Development\skoda\protected\views\site\index.php(5): SiteController->widget()
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(127): require()
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CBaseController.php(96): SiteController->renderInternal()
+#8 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(870): SiteController->renderFile()
+#9 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(783): SiteController->renderPartial()
+#10 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\SiteController.php(32): SiteController->render()
+#11 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#12 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#13 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): SiteController->runAction()
+#14 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#15 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): SiteController->run()
+#16 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#17 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#18 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php (112)
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuth.php (56)
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\extensions\eauth\EAuthWidget.php (56)
+2012/08/17 15:51:25 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'source' at row 1. The SQL statement executed was: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2).
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\VotesController.php (26)
+in C:\WorkSpace\actual\skoda\Development\skoda\index.php (13)
+2012/08/17 15:51:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'source' at row 1. The SQL statement executed was: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2)' in C:\WorkSpace\actual\skoda\Development\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\yii\framework\db\ar\CActiveRecord.php(1014): CDbCommand->execute()
+#1 C:\WorkSpace\actual\skoda\Development\yii\framework\db\ar\CActiveRecord.php(787): CActiveRecord->insert(NULL)
+#2 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\VotesController.php(26): CActiveRecord->save()
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): VotesController->actionAdd()
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): CController->run('add')
+#8 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('votes/add')
+#9 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=votes%2Fadd&service=facebook&code=AQBAI68OYPRc3k-m7l7F-qB0dU8xRBFEw6eH88LOMORb8YzaY1zbnTS4xwEosmwOCfR1jmX1jKtNuFFBYuWEG6fM7JuyNFRubdJElYmJRanMGOBeQhz6WMnOJx0AUXH6771sYGYsv26VuE1hglpw0QljDJ6WGBRtlTztk_XfpLJvbJtgDNwA5DelX_XtoarsjCU
+---
+2012/08/17 15:53:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skoda`.`tbl_votes`, CONSTRAINT `tbl_votes_ibfk_1` FOREIGN KEY (`contest_item_id`) REFERENCES `tbl_contest_items` (`id`)). The SQL statement executed was: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2).
+in C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\VotesController.php (26)
+in C:\WorkSpace\actual\skoda\Development\skoda\index.php (13)
+2012/08/17 15:53:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`skoda`.`tbl_votes`, CONSTRAINT `tbl_votes_ibfk_1` FOREIGN KEY (`contest_item_id`) REFERENCES `tbl_contest_items` (`id`)). The SQL statement executed was: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2)' in C:\WorkSpace\actual\skoda\Development\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\WorkSpace\actual\skoda\Development\yii\framework\db\ar\CActiveRecord.php(1014): CDbCommand->execute()
+#1 C:\WorkSpace\actual\skoda\Development\yii\framework\db\ar\CActiveRecord.php(787): CActiveRecord->insert(NULL)
+#2 C:\WorkSpace\actual\skoda\Development\skoda\protected\controllers\VotesController.php(26): CActiveRecord->save()
+#3 C:\WorkSpace\actual\skoda\Development\yii\framework\web\actions\CInlineAction.php(50): VotesController->actionAdd()
+#4 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(276): CController->run('add')
+#8 C:\WorkSpace\actual\skoda\Development\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('votes/add')
+#9 C:\WorkSpace\actual\skoda\Development\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\WorkSpace\actual\skoda\Development\skoda\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=votes/add&service=facebook&redirect_uri=http%3A%2F%2Fskoda.local%2Findex.php%3Fr%3Dvotes%2Fadd%26service%3Dfacebook&js
+HTTP_REFERER=http://skoda.local/index.php
+---

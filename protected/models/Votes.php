@@ -38,9 +38,9 @@ class Votes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('source, contest_item_id, user_identity, created', 'required'),
+			array('source, contest_item_id, user_identity', 'required'),
 			array('contest_item_id', 'numerical', 'integerOnly'=>true),
-			array('source', 'length', 'max'=>5),
+			array('source', 'length', 'max'=>20),
 			array('user_identity', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

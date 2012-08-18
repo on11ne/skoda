@@ -65,6 +65,7 @@ class Users extends CActiveRecord
             array('last_name', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
 
             array('phone', 'match', 'pattern'=>'/^([+]?[0-9 ]+){11,15}$/'),
+            array('phone', 'unique', 'className' => 'Users', 'attributeName' => 'phone'),
 
             array('company', 'exist', 'className' => 'Companies', 'attributeName' => 'id'),
 
