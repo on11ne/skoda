@@ -72,22 +72,23 @@ class Users extends CActiveRecord
             array('city', 'exist', 'className' => 'Cities', 'attributeName' => 'id'),
 
             array('position', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
+
+            array('photo', 'file', 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, email, password, first_name, surname, last_name, phone, company, city, position, photo, activation, status, registered_date', 'safe', 'on'=>'search'),
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+
+        return array(
+            'user_id' => array(self::HAS_ONE, 'ContestItems', 'user_id')
+        );
+    }
 
 	/**
 	 * @return array customized attribute labels (name=>label)

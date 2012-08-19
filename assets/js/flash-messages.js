@@ -7,41 +7,75 @@
  */
 function error(contents) {
 
-    contents = "<div class='error'>" + contents + "</div>";
+    contents = "<div class='error_box'>" + contents + "</div>";
 
     jQuery.fancybox(contents, {
-        opacity: true,
-        overlayOpacity: 0,
-        padding: 0,
-        width: 550,
-        height: 187,
-        autoDimensions: false
+        overlay : {
+            speedIn  : 0,
+            speedOut : 300,
+            opacity  : 0.55,
+            css      : {
+                cursor : 'pointer',
+                'background' : '#4ba82e'
+            },
+            closeClick: true
+        },
+        minWidth: 300,
+        minHeight: 120,
+        autoSize: true,
+        scrolling: 'no'
     })
 }
 
 function success(contents) {
 
-    contents = "<div class='success'>" + contents + "</div>";
+    contents = "<div class='success_box'>" + contents + "</div>";
 
     jQuery.fancybox(contents, {
-        opacity: true,
-        overlayOpacity: 0,
-        padding: 0,
-        width: 550,
-        height: 60,
-        autoDimensions: false
+        overlay : {
+            speedIn  : 0,
+            speedOut : 300,
+            opacity  : 0.55,
+            css      : {
+                cursor : 'pointer',
+                'background-color' : '#4ba82e'
+            },
+            closeClick: true
+        },
+        minWidth: 300,
+        minHeight: 120,
+        autoSize: true,
+        scrolling: 'no'
     })
 }
 
 jQuery(function() {
+
+    jQuery('.fancybox').fancybox({
+        overlay : {
+            speedIn  : 0,
+            speedOut : 300,
+            opacity  : 0.55,
+            css      : {
+                cursor : 'pointer',
+                'background' : '#4ba82e'
+            },
+            closeClick: true
+        },
+        minWidth: 300,
+        minHeight: 120,
+        autoSize: true,
+        scrolling: 'no'
+    });
+
+    if(jQuery(".error").length)
+        error(jQuery(".error").html());
+
     if(jQuery(".errorSummary").length)
         error(jQuery(".errorSummary").html());
 
     if(jQuery(".successSummary").length)
         success(jQuery(".successSummary").html());
-
-    if(jQuery(".error").length)
-        success(jQuery(".error").html());
 
     if(jQuery(".success").length)
         success(jQuery(".success").html());

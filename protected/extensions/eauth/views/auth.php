@@ -9,7 +9,6 @@
 			'class' => 'auth-link '.$service->id,
 		));
 		echo $html;
-		echo '</li>';
 	}
   ?>
   </ul>

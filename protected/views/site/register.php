@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'register-form-register-form',
 	'enableAjaxValidation'=>false,
+    'htmlOptions' => array('enctype' => 'multipart/form-data')
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -107,7 +108,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'photo'); ?>
-		<?php echo $form->textField($model,'photo'); ?>
+		<?php echo $form->fileField($model,'photo'); ?>
 		<?php echo $form->error($model,'photo'); ?>
 	</div>
 

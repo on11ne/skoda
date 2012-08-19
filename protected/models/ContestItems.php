@@ -34,6 +34,7 @@ class ContestItems extends CActiveRecord
 		return 'tbl_contest_items';
 	}
 
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -44,9 +45,14 @@ class ContestItems extends CActiveRecord
 		return array(
 			array('title, user_id, full_text', 'required'),
 			array('contest_id, user_id, status', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max' => 255),
-            array('images', 'file', 'maxFiles' => 5, 'maxSize' => 15000000),
+			array('title', 'length', 'max' => 19),
+            array('full_text', 'length', 'max' => 1500, 'min' => 300),
+            array('images', 'file', 'maxFiles' => 5, 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
 			array('full_text, videos', 'safe'),
+            array('user_id', 'unique', 'criteria' => array(
+                'condition' => 'contest_id=:cid',
+                'params' => array(':cid' => Yii::app()->params['contest_id'])), 'message' => 'Вы уже размещали работу в данном конкурсе'
+            ),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, full_text, images, videos, contest_id, user_id, status, created', 'safe', 'on'=>'search'),
@@ -64,6 +70,9 @@ class ContestItems extends CActiveRecord
             Yii::app()->params['contest_id']; // . '/' .
             //Yii::app()->user->id;
 
+        $upload_web_path = '/images/contests/' .
+            Yii::app()->params['contest_id'];
+
         if(!is_dir($upload_directory)) {
            if(!mkdir($upload_directory, 0755)) {
                $this->addError('images', 'Не возможно создать каталог пользователя');
@@ -73,31 +82,31 @@ class ContestItems extends CActiveRecord
 
         $images = CUploadedFile::getInstancesByName('ContestItems[images]');
 
-        $processed_images = array();
-
-        // proceed if the images have been set
         if (isset($images) && count($images) > 0) {
 
             foreach ($images as $c => $pic) {
 
                 $image_name = md5(uniqid() . time()) . "." . pathinfo($pic->name, PATHINFO_EXTENSION);
 
+                $image_real_path = $upload_directory . '/' . $image_name;
+                $thumb_real_path = $upload_directory . '/' . "thumb_" . $image_name;
+
                 $image = new Images();
-                $image->path = $upload_directory . '/' . $image_name;
-                $image->thumb_path = $upload_directory . '/' . "thumb_" . $image_name;
+                $image->path = $upload_web_path . '/' . $image_name;
+                $image->thumb_path = $upload_web_path . '/' . "thumb_" . $image_name;
                 $image->user_id = Yii::app()->user->id;
+                $image->contest_item_id = $this->id;
 
                 // saving an image
 
-                if (!$pic->saveAs($image->path)) {
+                if (!$pic->saveAs($image_real_path)) {
                     $this->addError('images', 'Не возможно загрузить изображение ' . $pic->name);
                     return false;
                 }
 
-                var_dump($image->path);
                 // optimizing original
 
-                if(!($original = Yii::app()->image->load($image->path))) {
+                if(!($original = Yii::app()->image->load($image_real_path))) {
                     $this->addError('images', 'Не возможно загрузить изображение ' . $pic->name . ' для обработки');
                     return false;
                 }
@@ -110,8 +119,10 @@ class ContestItems extends CActiveRecord
 
                 // creating thumb
 
-                $original->resize(200, 100);
-                if(!$original->save($image->thumb_path)) {
+                $original->resize(257, 126, Image::WIDTH);
+                $original->crop(257, 126);
+
+                if(!$original->save($thumb_real_path)) {
                     $this->addError('images', 'Не возможно сохранить превью изображения ' . $pic->name);
                     return false;
                 }
@@ -122,12 +133,8 @@ class ContestItems extends CActiveRecord
                     $this->addError('images', 'Не возможно сохранить изображение ' . $pic->name . '. Ошибка:' . var_export($image->getErrors(), true));
                     return false;
                 }
-
-                $processed_images[] = $image->id;
             }
         }
-
-        return $processed_images;
     }
 
 
@@ -142,13 +149,15 @@ class ContestItems extends CActiveRecord
 	/**
 	 * @return array relational rules.
 	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    public function relations() {
+
+        return array(
+            'contest' => array(self::BELONGS_TO, 'Contest', 'contest_id'),
+            'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+            'images' => array(self::HAS_MANY, 'Images', 'contest_item_id'),
+            'votes' => array(self::HAS_MANY, 'Votes', 'contest_item_id'),
+        );
+    }
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -158,7 +167,7 @@ class ContestItems extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'title' => 'Название',
-			'full_text' => 'Описание',
+			'full_text' => 'Текст',
 			'images' => 'Изображения',
 			'videos' => 'Видео',
 			'contest_id' => 'Конкурс',

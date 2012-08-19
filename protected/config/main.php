@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Мотивационная программа Skoda',
 
 	// preloading 'log' compofcddnent
 	'preload'=>array('log'),
@@ -135,6 +135,13 @@ return array(
                         'source/jquery.fancybox-thumbs.css',
                     ),
                 ),
+                'bxslider' => array(
+                    'baseUrl'=>'/assets/js',
+                    'js' => array(
+                        'jquery.bxSlider.min.js'
+                    ),
+                    'depends' => array('jquery')
+                ),
             ),
         ),
         'image'=>array(
@@ -145,13 +152,14 @@ return array(
             'params'=>array('directory'=>'/opt/local/bin'),
         ),
 	),
-
+    'sourceLanguage'    =>'ru',
+    'language'          =>'ru',
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail' => 'webmaster@skoda.ru',
-        'adminName' => 'Сайт мотивационной программы Шкода Нижний Новгород',
+        'adminName' => 'Сайт мотивационной программы Skoda Нижний Новгород',
         'moderatorEmail' => 'denis@ekimov.su',
         'salt' => 'd-a08a80-f&a-8fx0v8nbz8fg-8sgA-8GS-',
         'contest_id' => 1

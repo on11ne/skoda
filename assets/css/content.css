@@ -1,0 +1,209 @@
+div.wrappToMSlidder div.descWrappMain_innerP {
+    width: auto;
+}
+
+div.wrappToMSlidder div.descWrappMain_innerP > div.descWrapp {
+    height: 75px;
+    line-height: 40px;
+    padding-right: 17px;
+}
+
+div.wrappToMSlidder div.descWrappMain_innerP > div.descWrapp > div.title{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+div.breadcrumb > menu > li {
+    display: inline;
+}
+
+div.breadcrumb > menu > li > img{
+    margin-top: 7px;
+}
+
+div.breadcrumb > menu > li > span {
+    color: #666;
+}
+
+div.innerP > div.InnerWrappToMain {
+    padding: 18px 20px 25px 20px;
+    background-color: #fff;
+}
+
+div.innerP > div.InnerWrappToMain > div{
+    height: auto;
+    background-color: transparent;
+}
+
+div.innerP > div.InnerWrappToMain article {
+    margin-top: 15px;
+}
+
+div.innerP > div.InnerWrappToMain article > div.desc {
+    color: #555;
+    margin-bottom: 20px;  
+}
+
+div.innerP > div.InnerWrappToMain article section{
+    width: 410px;
+    float: left;
+}
+
+div.innerP > div.InnerWrappToMain article aside{
+    float: right;
+    min-height: 178px;
+    padding-top: 16px;
+    position: relative;
+    width: 165px;
+}
+
+section > div.innerP > div > section {
+    width: 585px;
+    float: left;
+}
+
+section > div.innerP > div > aside {
+    float: right;
+}
+
+div.innerP > div.InnerWrappToMain article form label {
+    color: #555;
+    display: block;
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+div.innerP > div.InnerWrappToMain article form > section input,
+div.innerP > div.InnerWrappToMain article form > section textarea {
+    box-shadow: inset 2px 3px 12px -5px #000;
+    border: 1px solid #9f9f9f;
+    width: 378px;
+    max-width: 378px;
+    padding-left: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form input {
+    height: 23px;
+}
+
+div.innerP > div.InnerWrappToMain article form textarea {
+    height: 123px;
+    max-height: 123px;
+    padding-top: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form section > div {
+    margin-bottom: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit,
+div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
+#ContestItems_images_wrap {
+    color: #fff;
+    cursor: pointer;
+    height: 25px;
+    width: 162px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    line-height: 24px;
+    padding-left: 20px;
+    padding-bottom: 4px;
+    background: #4ba82e url(../images/arrowToSubButt.png) no-repeat center right;
+    background-position: 92% 50%;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.MultiFile-label {
+    height: 20px;
+}
+
+input.submit {
+    font-family: verdana;
+    font-size: 13px;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit {
+    bottom: 0px;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit:hover {
+    background-color: #009933;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
+#ContestItems_images_wrap {
+    width: 162px;
+    border: none;
+    text-align: left;
+    padding-left: 10px;
+    background: #555 url(../images/arrowToUpldButt.png) no-repeat center right;
+    background-position: 93% 50%;
+}
+
+#ContestItems_images_wrap {
+    display: block;
+    direction: ltr;
+    /*overflow: hidden;
+    overflow-x: hidden;*/
+    position: relative;
+}
+
+.MultiFile-list {
+    color: #000000;
+    margin-top: 10px;
+    position: absolute;
+}
+
+.MultiFile-applied {
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 118px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 23px;
+    -moz-transition: all 0.5s ease 0s;
+    vertical-align: middle;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button:hover {
+    background-color: #333;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside .qq-upload-list li.qq-upload-success {
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    padding-left: 0px;
+    background-color: transparent;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside .qq-upload-size, .qq-upload-cancel {
+    color: #b6b6b6;
+}
+
+span.qq-upload-close {
+    width: 9px;
+    height: 9px;
+    float: right;
+    cursor: pointer;
+    margin-top: 2px;
+    background: url(../images/clodeBtn.png) no-repeat;
+}
+
+span.qq-upload-file {
+    width: 88px;
+    display: block;
+    float: left;
+}
+
+.errorMessage {
+    font: 10px/11px Verdana,Tahoma,Arial,sans-serif;
+    color: red;
+    margin-top: 4px;
+}

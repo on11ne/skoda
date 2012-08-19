@@ -8,6 +8,7 @@
  * @property string $path
  * @property integer $user_id
  * @property string $thumb_path
+ * @property string $contest_item_id
  * @property string $created
  */
 class Images extends CActiveRecord
@@ -38,7 +39,7 @@ class Images extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, path, thumb_path', 'required'),
+			array('user_id, path, thumb_path, contest_item_id', 'required'),
 			array('path', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -54,6 +55,7 @@ class Images extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'contest_item_id' => array(self::BELONGS_TO, 'ContestItems', 'contest_item_id')
 		);
 	}
 
@@ -67,6 +69,7 @@ class Images extends CActiveRecord
 			'path' => 'Путь',
 			'created' => 'Создан',
             'user_id' => 'Пользователь',
+            'user_id' => 'Конкурсная работа',
             'thumb_path' => 'Путь до превью'
 		);
 	}

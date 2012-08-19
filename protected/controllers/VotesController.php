@@ -25,7 +25,7 @@ class VotesController extends Controller
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update', 'add'),
+                'actions'=>array('create', 'update', 'add', 'voteForm'),
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -36,6 +36,11 @@ class VotesController extends Controller
                 'users'=>array('*'),
             ),
         );
+    }
+
+    public function actionVoteForm() {
+
+        $this->renderPartial('//voting/social_vote', array('data' => Yii::app()->request->getParam('contest_item_id', 0)));
     }
 
 	public function actionAdd()

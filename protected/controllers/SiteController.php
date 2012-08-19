@@ -2,6 +2,8 @@
 
 class SiteController extends Controller
 {
+    public $layout='//layouts/main';
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -87,21 +89,19 @@ class SiteController extends Controller
 	 */
 	public function actionContact()
 	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-type: text/plain; charset=UTF-8";
+		$model = new ContactForm;
 
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+		if(isset($_POST['ContactForm'])) {
+
+			$model->attributes=$_POST['ContactForm'];
+
+			if($model->validate()) {
+
+                if(Mailer::sendToModerator(Yii::app()->user->id, "Пользователь #" . Yii::app()->user->id, "Сообщение обратной связи", $model->body))
+				    Yii::app()->user->setFlash('success', 'Сообщение успешно отправлено!');
+                else
+                    Yii::app()->user->setFlash('success', 'Ошибка отправки сообщения<br/>Просьба связаться с администратором " . Yii::app()->params["adminEmail"]');
+
 				$this->refresh();
 			}
 		}
@@ -156,14 +156,17 @@ class SiteController extends Controller
             $user->password = md5($user->password . Yii::app()->params['salt']);
             $user->status = Users::NOT_ACTIVATED;
 
+            $user->photo = CUploadedFile::getInstance($user, 'photo');
+
             if($user->save()) {
 
-                $name='=?UTF-8?B?'.base64_encode(Yii::app()->params['adminName']).'?=';
-                $subject='=?UTF-8?B?'.base64_encode("Активация учётной записи").'?=';
-                $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
-                    "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
-                    "MIME-Version: 1.0\r\n".
-                    "Content-type: text/html; charset=UTF-8";
+                $upload_directory = Yii::getPathOfAlias('webroot').'/images/users/' .
+                    Yii::app()->user->id; // . '/' .
+                //Yii::app()->user->id;
+
+                if(!$user->photo->saveAs($upload_directory)) {
+                    $user->addError('photo', 'Фотография не может быть сохранена');
+                }
 
                 $message = $this->renderPartial('//messages/registration', array('data' => array(
                     'first_name' => $user->first_name,
@@ -171,22 +174,16 @@ class SiteController extends Controller
                     'activationLink' => Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation))
                 )), true);
 
-                if(mail($user->email,$subject,$message,$headers))
+                if(Mailer::sendToUser($user->email, "Активация учётной записи", $message))
                     Yii::app()->user->setFlash('success', "Спасибо!<br/>На ваш адрес электронной почты отправлено сообщение с деталями активации");
-                /*
-                $identity=new UserIdentity($newUser->username,$model->password);
-                $identity->authenticate();
-                Yii::app()->user->login($identity,0);
-                //redirect the user to page he/she came from
-                $this->redirect(Yii::app()->user->returnUrl);
-                */
-
-            } else {
-                var_dump($user->getErrors());
+                else {
+                    $user->addError('email', 'Сообщение об активации не может быть отправлено на указанный адрес');
+                    Yii::app()->user->setFlash('error', "Процесс регистрации не может быть завершён");
+                }
             }
-
         }
-        // display the register form
+
+        $user->password = '';
 
         $this->render('register', array('model' => $user));
 
@@ -195,7 +192,7 @@ class SiteController extends Controller
     public function actionActivate() {
 
         if(empty($_GET['activation']))
-            throw new CHttpException(404, 'Not found');
+            throw new CHttpException(404, 'Активационный ключ не найден');
         else
             $activation = $_GET['activation'];
 
@@ -204,25 +201,18 @@ class SiteController extends Controller
         ));
 
         if ($model === null)
-            throw new CHttpException(404, 'Not found');
+            throw new CHttpException(404, 'Активационный ключ не найден');
         else
             $model->status = Users::NOT_MODERATED;
 
         if($model->save()) {
-            Yii::app()->user->setFlash('success', "Учётная запись успешно активирована!");
 
-            $name='=?UTF-8?B?'.base64_encode(Yii::app()->params['adminName']).'?=';
-            $subject='=?UTF-8?B?'.base64_encode("Регистрация нового пользователя").'?=';
-            $headers="From: $name <" . Yii::app()->params['adminEmail'] . ">\r\n".
-                "Reply-To: " . Yii::app()->params['adminEmail'] . "\r\n".
-                "MIME-Version: 1.0\r\n".
-                "Content-type: text/html; charset=UTF-8";
+            Yii::app()->user->setFlash('success', "Учётная запись успешно активирована!<br/>Ожидается проверка модератором");
 
             $message = $this->renderPartial('//messages/new_user', array('data' => $model), true);
-
-            if(mail(Yii::app()->params['moderatorEmail'], $subject, $message, $headers))
-                Yii::app()->user->setFlash('success', "Ваша учётная запись успешно активирована!");
-
+            if(!Mailer::sendToModerator($model->email, $model->surname . " " . $model->first_name, "Регистрация нового пользователя", $message)) {
+                Yii::app()->user->setFlash('error', "Не возможно отправить сообщение об активации<br/>Просьба связаться с администратором " . Yii::app()->params['adminEmail']);
+            }
         }
         else
             Yii::app()->user->setFlash('error', "Ошибка активации учётной записи");

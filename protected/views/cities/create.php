@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Cities', 'url'=>array('index')),
-	array('label'=>'Manage Cities', 'url'=>array('admin')),
+	array('label'=>'Список городов', 'url'=>array('index')),
+	array('label'=>'Управлением списком', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Cities</h1>
+<h1>Добавить город</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

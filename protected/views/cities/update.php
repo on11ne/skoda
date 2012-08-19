@@ -5,14 +5,14 @@
 $this->breadcrumbs=array(
 	'Cities'=>array('index'),
 	$model->title=>array('view','id'=>$model->id),
-	'Update',
+	'Update',   
 );
 
 $this->menu=array(
 	array('label'=>'List Cities', 'url'=>array('index')),
-	array('label'=>'Create Cities', 'url'=>array('create')),
-	array('label'=>'View Cities', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Cities', 'url'=>array('admin')),
+	array('label'=>'Добавить город', 'url'=>array('create')),
+	array('label'=>'Список городов', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Управлением списком', 'url'=>array('admin')),
 );
 ?>
 

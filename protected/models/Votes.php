@@ -44,20 +44,24 @@ class Votes extends CActiveRecord
             array('source', 'in', 'range' => array('facebook', 'vkontakte')),
 			array('user_identity', 'length', 'max'=>255),
 
+            array('user_identity', 'unique', 'criteria' => array(
+                'condition' => 'contest_item_id=:cid',
+                'params' => array(':cid' => $this->contest_item_id)), 'message' => 'Вы уже голосовали за данную работу'
+            ),
+
 			array('id, source, contest_item_id, user_identity, created', 'safe', 'on'=>'search'),
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+
+        return array(
+            'contest_item' => array(self::BELONGS_TO, 'ContestItems', 'contest_item_id'),
+        );
+    }
 
 	/**
 	 * @return array customized attribute labels (name=>label)

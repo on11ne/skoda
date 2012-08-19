@@ -95,8 +95,8 @@
 
 .fancybox-close {
 	position: absolute;
-	top: -18px;
-	right: -18px;
+	top: 3px;
+	right: 3px;
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
@@ -165,7 +165,7 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
-	background: #000;
+	background: #4ba82e;
 }
 
 #fancybox-overlay.overlay-fixed {

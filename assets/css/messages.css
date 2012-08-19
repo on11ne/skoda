@@ -1,0 +1,9 @@
+.fancybox-inner .error_box {
+    background: url('../images/error_message.png') no-repeat top left;
+    padding-top: 60px;
+}
+
+.fancybox-inner .success_box {
+    background: url('../images/success_message.png') no-repeat top left;
+    padding-top: 60px;
+}

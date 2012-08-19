@@ -862,3 +862,418 @@ Stack trace:
 REQUEST_URI=/index.php?r=contestitems/add
 HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
 ---
+2012/08/19 01:41:06 [error] [php] Undefined variable: ER (C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php:87)
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(60): ContestItems->processImages()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): ContestitemsController->runAction()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): ContestitemsController->filterAccessControl()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): ContestitemsController->runActionWithFilters()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): ContestitemsController->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CWebApplication->run()
+REQUEST_URI=/index.php?r=contestitems/add
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\Image.php (87)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\extensions\image\CImageComponent.php (41)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\models\ContestItems.php (100)
+2012/08/19 01:58:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('register')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/register')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/register
+---
+2012/08/19 11:17:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('admin')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('cities/admin')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=cities/admin
+HTTP_REFERER=http://skoda.local/index.php?r=site/login
+---
+2012/08/19 11:23:47 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('register')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('site/register')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/register
+---
+2012/08/19 12:03:36 [warning] [application] Failed to set unsafe attribute "photo" of "Users".
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (149)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 12:05:16 [warning] [application] Failed to set unsafe attribute "photo" of "Users".
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (149)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 12:06:45 [warning] [application] Failed to set unsafe attribute "photo" of "Users".
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (149)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 12:07:17 [warning] [application] Failed to set unsafe attribute "photo" of "Users".
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (149)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 12:09:57 [warning] [application] Failed to set unsafe attribute "photo" of "Users".
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (149)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 14:21:29 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6fc_2e' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `contest_item_relation` FOREIGN KEY (`contest_item_id`) REFERENCES `tbl_contest_items` (`id`).
+2012/08/19 14:21:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1005 Can't create table 'skoda.#sql-6fc_2e' (errno: 121). The SQL statement executed was: ALTER TABLE `tbl_videos` ADD CONSTRAINT `contest_item_relation` FOREIGN KEY (`contest_item_id`) REFERENCES `tbl_contest_items` (`id`)' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(1362): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbMigration.php(344): CDbCommand->addForeignKey('contest_item_re...', 'tbl_videos', 'contest_item_id', 'tbl_contest_ite...', 'id', NULL, NULL)
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\migrations\m120819_101645_changing_images_videos_relations.php(11): CDbMigration->addForeignKey('contest_item_re...', 'tbl_videos', 'contest_item_id', 'tbl_contest_ite...', 'id')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(386): m120819_101645_changing_images_videos_relations->up()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\cli\commands\MigrateCommand.php(110): MigrateCommand->migrateUp('m120819_101645_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommand.php(173): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleCommandRunner.php(68): CConsoleCommand->run(Array)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\console\CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CConsoleApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\yiic.php(34): CApplication->run()
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\yiic.php(7): require_once('C:\Workspace\sk...')
+#12 {main}
+---
+2012/08/19 14:43:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Нет активных акций' in C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php:13
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#4 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#18 {main}
+REQUEST_URI=/
+---
+2012/08/19 14:45:18 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'description' in 'field list'. The SQL statement executed was: SELECT id, title, description, index_image FROM `tbl_contest_items` `t` WHERE status=2 LIMIT 1.
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php (19)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (70)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 14:45:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'description' in 'field list'. The SQL statement executed was: SELECT id, title, description, index_image FROM `tbl_contest_items` `t` WHERE status=2 LIMIT 1' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1291): CDbCommand->queryRow()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(19): CActiveRecord->find(Array)
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#8 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#19 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#20 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#22 {main}
+REQUEST_URI=/
+---
+2012/08/19 15:22:42 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "tbl_images" is not defined in active record class "ContestItems".' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php:216
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(280): CActiveFinder->buildJoinTree(Object(CJoinElement), 'tbl_images')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1295): CActiveFinder->__construct(Object(ContestItems), Array)
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#4 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(18): CActiveRecord->find(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#9 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#20 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#21 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#23 {main}
+REQUEST_URI=/
+---
+2012/08/19 15:22:52 [error] [exception.CDbException] exception 'CDbException' with message 'Relation "Images" is not defined in active record class "ContestItems".' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php:216
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(280): CActiveFinder->buildJoinTree(Object(CJoinElement), 'Images')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1295): CActiveFinder->__construct(Object(ContestItems), Array)
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1396): CActiveRecord->query(Object(CDbCriteria))
+#4 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(18): CActiveRecord->find(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#9 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#20 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#21 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#22 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#23 {main}
+REQUEST_URI=/
+---
+2012/08/19 15:35:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'status' in where clause is ambiguous. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`title` AS `t0_c1`, `t`.`full_text` AS `t0_c2`, `t`.`contest_id` AS `t0_c3`, `t`.`user_id` AS `t0_c4`, `t`.`status` AS `t0_c5`, `t`.`created` AS `t0_c6`, `user`.`id` AS `t2_c0`, `user`.`email` AS `t2_c1`, `user`.`password` AS `t2_c2`, `user`.`first_name` AS `t2_c3`, `user`.`surname` AS `t2_c4`, `user`.`last_name` AS `t2_c5`, `user`.`phone` AS `t2_c6`, `user`.`company` AS `t2_c7`, `user`.`city` AS `t2_c8`, `user`.`position` AS `t2_c9`, `user`.`photo` AS `t2_c10`, `user`.`activation` AS `t2_c11`, `user`.`status` AS `t2_c12`, `user`.`registered_date` AS `t2_c13` FROM `tbl_contest_items` `t`  LEFT OUTER JOIN `tbl_users` `user` ON (`t`.`user_id`=`user`.`id`)  WHERE (status=1) LIMIT 10.
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php (18)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (70)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 15:35:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'status' in where clause is ambiguous. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`title` AS `t0_c1`, `t`.`full_text` AS `t0_c2`, `t`.`contest_id` AS `t0_c3`, `t`.`user_id` AS `t0_c4`, `t`.`status` AS `t0_c5`, `t`.`created` AS `t0_c6`, `user`.`id` AS `t2_c0`, `user`.`email` AS `t2_c1`, `user`.`password` AS `t2_c2`, `user`.`first_name` AS `t2_c3`, `user`.`surname` AS `t2_c4`, `user`.`last_name` AS `t2_c5`, `user`.`phone` AS `t2_c6`, `user`.`company` AS `t2_c7`, `user`.`city` AS `t2_c8`, `user`.`position` AS `t2_c9`, `user`.`photo` AS `t2_c10`, `user`.`activation` AS `t2_c11`, `user`.`status` AS `t2_c12`, `user`.`registered_date` AS `t2_c13` FROM `tbl_contest_items` `t`  LEFT OUTER JOIN `tbl_users` `user` ON (`t`.`user_id`=`user`.`id`)  WHERE (status=1) LIMIT 10' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(18): CActiveRecord->findAll(Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#22 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#23 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#25 {main}
+REQUEST_URI=/
+---
+2012/08/19 15:36:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tbl_contest_items.status' in 'where clause'. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`title` AS `t0_c1`, `t`.`full_text` AS `t0_c2`, `t`.`contest_id` AS `t0_c3`, `t`.`user_id` AS `t0_c4`, `t`.`status` AS `t0_c5`, `t`.`created` AS `t0_c6`, `user`.`id` AS `t2_c0`, `user`.`email` AS `t2_c1`, `user`.`password` AS `t2_c2`, `user`.`first_name` AS `t2_c3`, `user`.`surname` AS `t2_c4`, `user`.`last_name` AS `t2_c5`, `user`.`phone` AS `t2_c6`, `user`.`company` AS `t2_c7`, `user`.`city` AS `t2_c8`, `user`.`position` AS `t2_c9`, `user`.`photo` AS `t2_c10`, `user`.`activation` AS `t2_c11`, `user`.`status` AS `t2_c12`, `user`.`registered_date` AS `t2_c13` FROM `tbl_contest_items` `t`  LEFT OUTER JOIN `tbl_users` `user` ON (`t`.`user_id`=`user`.`id`)  WHERE (tbl_contest_items.status=1) LIMIT 10.
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php (18)
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php (70)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/19 15:36:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tbl_contest_items.status' in 'where clause'. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`title` AS `t0_c1`, `t`.`full_text` AS `t0_c2`, `t`.`contest_id` AS `t0_c3`, `t`.`user_id` AS `t0_c4`, `t`.`status` AS `t0_c5`, `t`.`created` AS `t0_c6`, `user`.`id` AS `t2_c0`, `user`.`email` AS `t2_c1`, `user`.`password` AS `t2_c2`, `user`.`first_name` AS `t2_c3`, `user`.`surname` AS `t2_c4`, `user`.`last_name` AS `t2_c5`, `user`.`phone` AS `t2_c6`, `user`.`company` AS `t2_c7`, `user`.`city` AS `t2_c8`, `user`.`position` AS `t2_c9`, `user`.`photo` AS `t2_c10`, `user`.`activation` AS `t2_c11`, `user`.`status` AS `t2_c12`, `user`.`registered_date` AS `t2_c13` FROM `tbl_contest_items` `t`  LEFT OUTER JOIN `tbl_users` `user` ON (`t`.`user_id`=`user`.`id`)  WHERE (tbl_contest_items.status=1) LIMIT 10' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(784): CDbCommand->queryAll()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(422): CJoinElement->runQuery(Object(CJoinQuery))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveFinder.php(70): CJoinElement->find(Object(CDbCriteria))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1296): CActiveFinder->query(Object(CDbCriteria), true)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1410): CActiveRecord->query(Object(CDbCriteria), true)
+#6 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(18): CActiveRecord->findAll(Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#11 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#20 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#22 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#23 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#24 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#25 {main}
+REQUEST_URI=/
+---
+2012/08/19 22:58:17 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "CDbCriteria.message".' in C:\Workspace\skoda.ru\Development\server\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\schema\CDbCriteria.php(161): CComponent->__set('message', '???? ?????? ???...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\schema\CDbCriteria.php(470): CDbCriteria->__construct(Array)
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\validators\CUniqueValidator.php(97): CDbCriteria->mergeWith(Array)
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\validators\CValidator.php(214): CUniqueValidator->validateAttribute(Object(ContestItems), 'user_id')
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CModel.php(158): CValidator->validate(Object(ContestItems), NULL)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(795): CModel->validate(NULL)
+#6 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(61): CActiveRecord->save()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#20 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/19 23:03:08 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "ContestItems.getErrors".' in C:\Workspace\skoda.ru\Development\server\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(144): CComponent->__get('getErrors')
+#1 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(85): CActiveRecord->__get('getErrors')
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\ContestitemsController.php(63): ContestitemsController->renderError('//contest_items...', Object(ContestItems))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): ContestitemsController->actionAdd()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('contestitems/ad...')
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=contestitems/add
+HTTP_REFERER=http://skoda.local/index.php?r=contestitems/add
+---
+2012/08/20 00:11:15 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('voteForm')
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('votes/voteForm')
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=votes/voteForm
+HTTP_REFERER=http://skoda.local/index.php
+---
+2012/08/20 00:13:06 [error] [exception.CException] exception 'CException' with message 'Контроллер VotesController не может найти представление "Array".' in C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php:879
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\VotesController.php(43): CController->renderPartial(Array, Array)
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): VotesController->actionVoteForm()
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('voteForm')
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('votes/voteForm')
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=votes/voteForm
+HTTP_REFERER=http://skoda.local/index.php
+---
+2012/08/20 00:18:56 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::execute(): SQLSTATE[01000]: Warning: 1265 Data truncated for column 'source' at row 1. Выполнявшийся SQL-запрос: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2).
+in C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\VotesController.php (67)
+in C:\Workspace\skoda.ru\Development\server\skoda\index.php (24)
+2012/08/20 00:18:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'source' at row 1. The SQL statement executed was: INSERT INTO `tbl_votes` (`contest_item_id`, `source`, `user_identity`) VALUES (:yp0, :yp1, :yp2)' in C:\Workspace\skoda.ru\Development\server\yii\framework\db\CDbCommand.php:354
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(1017): CDbCommand->execute()
+#1 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(796): CActiveRecord->insert(NULL)
+#2 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\VotesController.php(67): CActiveRecord->save()
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): VotesController->actionAdd()
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('add')
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('votes/add')
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php?r=votes%2Fadd&contest_item_id=20&service=facebook&code=AQCEdZh8AB4QBwRdcdw2PCsHdiZLy3w1h-1SiMm2EkjnE8_WamdpscD0jGrgHFFPrxrXA-ow0KOurSL6Df1rvin9x_0LRMFjxLffyD1_un4NHHeovlKwdph9sCNiHFuP0CmtW9HP4aAtslpOKLWLAeMFigvUmS3_RWmQlN_hSpYAx30h-qiQL1VLIiFnzKQexR4
+HTTP_REFERER=http://skoda.local/index.php
+---
+2012/08/20 00:28:16 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "Images.votes".' in C:\Workspace\skoda.ru\Development\server\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\Workspace\skoda.ru\Development\server\yii\framework\db\ar\CActiveRecord.php(144): CComponent->__get('votes')
+#1 C:\Workspace\skoda.ru\Development\server\skoda\protected\views\site\index.php(77): CActiveRecord->__get('votes')
+#2 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(127): require('C:\Workspace\sk...')
+#3 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\Workspace\sk...', NULL, true)
+#4 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(870): CBaseController->renderFile('C:\Workspace\sk...', NULL, true)
+#5 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(783): CController->renderPartial('index', NULL, true)
+#6 C:\Workspace\skoda.ru\Development\server\skoda\protected\controllers\SiteController.php(70): CController->render('index')
+#7 C:\Workspace\skoda.ru\Development\server\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionIndex()
+#8 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#12 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\Workspace\skoda.ru\Development\server\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(283): CController->run('')
+#17 C:\Workspace\skoda.ru\Development\server\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('')
+#18 C:\Workspace\skoda.ru\Development\server\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 C:\Workspace\skoda.ru\Development\server\skoda\index.php(24): CApplication->run()
+#20 {main}
+REQUEST_URI=/index.php
+HTTP_REFERER=http://skoda.local/index.php?r=votes/add&contest_item_id=20&service=facebook
+---
