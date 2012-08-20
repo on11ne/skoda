@@ -40,10 +40,18 @@ class News extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, created', 'required'),
-			array('teaser_image, status', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>255),
+			array('title, teaser_text, teaser_image, created, status, full_text', 'required'),
+
+			array('title', 'length', 'max'=>55),
 			array('teaser_text, full_text', 'safe'),
+
+            array('teaser_image', 'file', 'on'=>'create', 'maxSize' => 2000000, 'types' => 'jpg, png, gif'),
+            array('teaser_image', 'file', 'on'=>'update', 'allowEmpty' => true, 'maxSize' => 2000000, 'types' => 'jpg, png, gif'),
+
+            array('created', 'date', 'format' => 'yyyy-MM-dd'),
+
+            array('status', 'in', 'range' => array(0, 1)),
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, teaser_text, teaser_image, created, status, full_text', 'safe', 'on'=>'search'),
@@ -68,12 +76,12 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'teaser_text' => 'Teaser Text',
-			'teaser_image' => 'Teaser Image',
-			'created' => 'Created',
-			'status' => 'Status',
-			'full_text' => 'Full Text',
+			'title' => 'Название',
+			'teaser_text' => 'Краткое описание',
+			'teaser_image' => 'Изображение',
+			'created' => 'Дата создания',
+			'status' => 'Публикация',
+			'full_text' => 'Текст',
 		);
 	}
 

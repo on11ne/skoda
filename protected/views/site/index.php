@@ -64,7 +64,7 @@ $('img.vote_control').hover(function(){
                 <?php
                     $counter = 1;
                     foreach($contest_items as $contest_item) :
-                        $image = end($contest_item->images);
+                        $image = $contest_item->images[0];
                 ?>
 
                 <?php if($counter == 1) : ?>

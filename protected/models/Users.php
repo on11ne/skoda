@@ -73,7 +73,8 @@ class Users extends CActiveRecord
 
             array('position', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
 
-            array('photo', 'file', 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
+            array('photo', 'file', 'on'=>'register', 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
+            array('photo', 'file', 'on'=>'activate', 'allowEmpty' => true, 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, email, password, first_name, surname, last_name, phone, company, city, position, photo, activation, status, registered_date', 'safe', 'on'=>'search'),
@@ -98,18 +99,18 @@ class Users extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'email' => 'Email',
-			'password' => 'Password',
-			'first_name' => 'First Name',
-			'surname' => 'Surname',
-			'last_name' => 'Last Name',
-			'phone' => 'Phone',
-			'company' => 'Company',
-			'city' => 'City',
-			'position' => 'Position',
-			'photo' => 'Photo',
-			'activation' => 'Activation',
+			'password' => 'Пароль',
+			'first_name' => 'Имя',
+			'surname' => 'Фамилия',
+			'last_name' => 'Отчество',
+			'phone' => 'Телефон',
+			'company' => 'Компания',
+			'city' => 'Город',
+			'position' => 'Должность',
+			'photo' => 'Фотография',
+			'activation' => 'Активационный ключ',
 			'status' => 'Status',
-			'registered_date' => 'Registered Date',
+			'registered_date' => 'Дата регистрации',
 		);
 	}
 

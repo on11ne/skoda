@@ -4,10 +4,10 @@ class m120819_101645_changing_images_videos_relations extends CDbMigration
 {
 	public function up()
 	{
-        /*$this->addColumn('tbl_images', 'contest_item_id', 'tinyint');
+        $this->addColumn('tbl_images', 'contest_item_id', 'tinyint');
         $this->addForeignKey('contest_item_relation', 'tbl_images', 'contest_item_id', 'tbl_contest_items', 'id');
 
-        $this->addColumn('tbl_videos', 'contest_item_id', 'tinyint');*/
+        $this->addColumn('tbl_videos', 'contest_item_id', 'tinyint');
         $this->addForeignKey('video_contest_item_relation', 'tbl_videos', 'contest_item_id', 'tbl_contest_items', 'id');
 
         $this->dropColumn('tbl_contest_items', 'images');

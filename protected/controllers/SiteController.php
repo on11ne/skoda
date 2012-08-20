@@ -46,7 +46,7 @@ class SiteController extends Controller
                 'users'=>array('*'),
             ),
             array('allow', // anonymous
-                'actions'=>array('register', 'login', 'activation'),
+                'actions'=>array('register', 'login', 'activate'),
                 'users'=>array('?'),
             ),
             array('allow', // registered
@@ -158,15 +158,17 @@ class SiteController extends Controller
 
             $user->photo = CUploadedFile::getInstance($user, 'photo');
 
+            $image_name = uniqid() . "." . pathinfo($user->photo->name, PATHINFO_EXTENSION);
+
+            $upload_directory = Yii::getPathOfAlias('webroot') . '/images/users/' . $image_name;
+            $web_directory = '/images/users/' . $image_name;
+
+            if(!$user->photo->saveAs($upload_directory))
+                $user->addError('photo', 'Фотография не может быть сохранена');
+
+            $user->photo = $image_name;
+
             if($user->save()) {
-
-                $upload_directory = Yii::getPathOfAlias('webroot').'/images/users/' .
-                    Yii::app()->user->id; // . '/' .
-                //Yii::app()->user->id;
-
-                if(!$user->photo->saveAs($upload_directory)) {
-                    $user->addError('photo', 'Фотография не может быть сохранена');
-                }
 
                 $message = $this->renderPartial('//messages/registration', array('data' => array(
                     'first_name' => $user->first_name,
@@ -174,9 +176,13 @@ class SiteController extends Controller
                     'activationLink' => Yii::app()->createAbsoluteUrl('site/activate', array('activation' => $user->activation))
                 )), true);
 
-                if(Mailer::sendToUser($user->email, "Активация учётной записи", $message))
+                if(Mailer::sendToUser($user->email, "Активация учётной записи", $message)) {
+
                     Yii::app()->user->setFlash('success', "Спасибо!<br/>На ваш адрес электронной почты отправлено сообщение с деталями активации");
-                else {
+
+                    $this->redirect(array('site/index'));
+                } else {
+
                     $user->addError('email', 'Сообщение об активации не может быть отправлено на указанный адрес');
                     Yii::app()->user->setFlash('error', "Процесс регистрации не может быть завершён");
                 }
@@ -215,7 +221,7 @@ class SiteController extends Controller
             }
         }
         else
-            Yii::app()->user->setFlash('error', "Ошибка активации учётной записи");
+            Yii::app()->user->setFlash('error', "Ошибка активации учётной записи.<br/>Ошибка: " . var_export($model->photo, true));
 
         $this->redirect(array('site/index'));
     }

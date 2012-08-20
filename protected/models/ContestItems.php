@@ -43,7 +43,7 @@ class ContestItems extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, user_id, full_text', 'required'),
+			array('title, user_id, full_text, images', 'required'),
 			array('contest_id, user_id, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max' => 19),
             array('full_text', 'length', 'max' => 1500, 'min' => 300),

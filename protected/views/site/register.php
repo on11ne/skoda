@@ -66,10 +66,10 @@
             //the input field can be defined here
             'htmlOptions'=>array('size'=>'40'),
 
-            'methodChain'=>".result(function(event,item){\$(\"#company\").val(item[1]);})",
+            'methodChain'=>".result(function(event,item){\$(\"#Users_company\").val(item[1]);})",
         ));
         ?>
-        <?php echo CHtml::hiddenField('company'); ?>
+        <?php echo $form->hiddenField($model, 'company'); ?>
 		<?php echo $form->error($model,'company'); ?>
 	</div>
 
@@ -93,10 +93,10 @@
             //the input field can be defined here
             'htmlOptions'=>array('size'=>'40'),
 
-            'methodChain'=>".result(function(event,item){\$(\"#city\").val(item[1]);})",
+            'methodChain'=>".result(function(event,item){\$(\"#Users_city\").val(item[1]);})",
         ));
         ?>
-        <?php echo CHtml::hiddenField('city'); ?>
+        <?php echo $form->hiddenField($model, 'city'); ?>
         <?php echo $form->error($model,'city'); ?>
 	</div>
 
