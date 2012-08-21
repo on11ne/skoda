@@ -1,11 +1,17 @@
 div.wrappToMSlidder div.descWrappMain_innerP {
     width: auto;
+    max-width: 265px;
+    max-height: 100px;
 }
 
 div.wrappToMSlidder div.descWrappMain_innerP > div.descWrapp {
-    height: 75px;
+    height: auto;
     line-height: 40px;
     padding-right: 17px;
+}
+
+div.descWrappMain_innerP > div.descWrapp {
+    padding-bottom: 5px;
 }
 
 div.wrappToMSlidder div.descWrappMain_innerP > div.descWrapp > div.title{
@@ -41,7 +47,8 @@ div.innerP > div.InnerWrappToMain article {
 
 div.innerP > div.InnerWrappToMain article > div.desc {
     color: #555;
-    margin-bottom: 20px;  
+    font-size: 13px;
+    margin-bottom: 20px;
 }
 
 div.innerP > div.InnerWrappToMain article section{
@@ -58,12 +65,17 @@ div.innerP > div.InnerWrappToMain article aside{
 }
 
 section > div.innerP > div > section {
-    width: 585px;
+    width: 656px;
     float: left;
 }
 
 section > div.innerP > div > aside {
     float: right;
+    width: 204px;
+}
+
+section > div.innerP > div > section.width585 {
+    width: 585px;
 }
 
 div.innerP > div.InnerWrappToMain article form label {
@@ -97,6 +109,8 @@ div.innerP > div.InnerWrappToMain article form section > div {
 }
 
 div.innerP > div.InnerWrappToMain article form > aside input.submit,
+div.innerP > div.InnerWrappToMain article form.login div.submit input,
+div.innerP > div.InnerWrappToMain article form.restore div.submit input,
 div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
 #ContestItems_images_wrap {
     color: #fff;
@@ -117,6 +131,21 @@ div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
 
 .MultiFile-label {
     height: 20px;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit {
+    bottom: 0px;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit:hover,
+div.innerP > div.InnerWrappToMain article form.login div.submit input:hover,
+div.innerP > div.InnerWrappToMain article form.restore div.submit input:hover {
+    background-color: #009933;
+}
+
+div.innerP > div.InnerWrappToMain article form > aside input.submit {
+    text-indent: -20px;
+    padding-left: 0px;
 }
 
 input.submit {
@@ -146,7 +175,7 @@ div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
     display: block;
     direction: ltr;
     /*overflow: hidden;
-    overflow-x: hidden;*/
+overflow-x: hidden;*/
     position: relative;
 }
 
@@ -202,8 +231,363 @@ span.qq-upload-file {
     float: left;
 }
 
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+    margin-right: 10px !important;
+}
+
 .errorMessage {
     font: 10px/11px Verdana,Tahoma,Arial,sans-serif;
     color: red;
     margin-top: 4px;
 }
+
+.qq-upload-size {
+    margin-right: 0px !important;
+}
+
+.qq-upload-list li:first-child {
+    padding-top: 0px;
+}
+
+
+div.innerP > div.InnerWrappToMain article {
+    font-size: 12px;
+}
+
+div.innerP > div.InnerWrappToMain article ul li {
+    margin-top: 10px;
+    list-style-image: url(../images/arrow.png);
+}
+
+div.innerP > div.InnerWrappToMain article ul.condOfPart {
+    margin-top: 15px;
+}
+
+div.innerP > div.InnerWrappToMain article span.greenText {
+    color: #4ba82e;
+}
+
+div.innerP > div.InnerWrappToMain article p {
+    margin-bottom: 10px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.email,
+div.innerP > div.InnerWrappToMain article form.login div.email input,
+div.innerP > div.InnerWrappToMain article form.restore div.email input {
+    width: 170px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.pass,
+div.innerP > div.InnerWrappToMain article form.login div.pass input {
+    width: 186px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login > div,
+div.innerP > div.InnerWrappToMain article form.restore > div {
+    float: left;
+    margin-right: 10px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.email,
+div.innerP > div.InnerWrappToMain article form.restore div.email,
+div.innerP > div.InnerWrappToMain article form.login div.checkbox {
+    width: 177px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.submit,
+div.innerP > div.InnerWrappToMain article form.restore div.submit {
+    float: right;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.submit input,
+div.innerP > div.InnerWrappToMain article form.restore div.submit input {
+    width: auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.checkbox input {
+    height: auto;
+    width: auto;
+    float: left;
+    margin-right: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login {
+    width: 390px;
+}
+
+div.innerP > div.InnerWrappToMain article form.restore {
+    width: 642px;
+}
+
+div.innerP > div.InnerWrappToMain article form.login div.submit,
+div.innerP > div.InnerWrappToMain article form.restore div.submit,
+div.innerP > div.InnerWrappToMain article form.login div.checkbox {
+    margin-top: 10px;
+}
+div.innerP > div.InnerWrappToMain article form.login div.checkbox {
+    padding-top: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form.restore input{
+    box-shadow: inset 2px 3px 12px -5px #000;
+    border: 1px solid #9f9f9f;
+    width: 378px;
+    max-width: 378px;
+    padding-left: 5px;
+}
+
+div.innerP > div.InnerWrappToMain article form.restore div.pass input {
+    width: 168px;
+}
+
+div.innerP > div.InnerWrappToMain article form.restore div.captcha {
+    width: 260px;
+    text-align: center;
+}
+
+ul.qq-upload-list li {
+    list-style: none !important;
+}
+
+div.innerP div.navToConent {
+    height: 31px !important;
+    z-index: 6;
+    margin-top: -18px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    position: relative;
+    background-color: #000 !important;
+}
+
+div.innerP div.navToConent ul li{
+    float: left;
+    display: block;
+    list-style: none;
+    line-height: 29px;
+}
+
+div.innerP div.navToConent ul li a{
+    color: #fefefe;
+    padding: 6px 15px;
+    padding-bottom: 9px;
+    text-decoration: none;
+}
+
+div.innerP div.navToConent ul li a:hover,
+div.innerP div.navToConent ul li.active a{
+    color: #313131;
+    background-color: #fff;
+}
+
+div.innerP div.navToConent ul > li:last-child {
+	float: none;
+}
+
+div.news > div.breadcrumb {
+    margin-top: 15px;
+}
+
+div.news > section > article > figure {
+    float: left;
+    margin-right: 23px;
+}
+
+div.wrappToTenders > article hgroup > h3,
+div.news > section > article hgroup > h3 {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+div.wrappToTenders > article.item hgroup > h4,
+div.news > section > article hgroup > h4 {
+    color: #aaaaaa;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+div.wrappToTenders article.item div.articleText,
+div.news > section > article div.articleText {
+    font-size: 13px;
+    color: #585858;
+    line-height: 18px;
+}
+
+div.innerP > div.news > section {
+    width: 100%;
+    float: none;
+}
+
+div.innerP > div.news article {
+    margin-bottom: 23px;
+}
+
+div.wrappToTenders article > figure > div.imgWrapp a > img,
+div.news article > figure > div.imgWrapp a > img,
+div.news article > figure > div.imgWrapp {
+    width: 200px;
+    height: 100px;
+}
+
+div.wrappToTenders article > figure > div.imgWrapp a > div.raiting,
+div.news article > figure > div.imgWrapp a > div.raiting{
+   left: 0px;
+   width: 139px;
+   background-color: rgba(60, 114, 36, 0.67);
+}
+
+div.news > section > article > div.articleWrapp {
+    float: right;
+    width: 637px;
+}
+
+div.news > section > article.innerNews hgroup > h3 {
+    font-size: 14px;
+}
+
+div.news > section > article.innerNews p.preText {
+    color: #000;
+}
+
+div.news > section > article.innerNews p.fullText {
+    color: #585858;
+}
+
+div.sortToWorks {
+    margin-top: 10px;
+}
+
+div.sortToWorks > div{
+    float: left;
+}
+
+div.sortToWorks > div.title{
+    margin-right: 18px;
+    margin-top: 5px;
+    color: #555;
+}
+
+div.wrappToTenders > article.item {
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+
+div.wrappToTenders > article.item:last-child {
+    margin-right: 15px;
+}
+
+div.wrappToTenders {
+    overflow: hidden;
+}
+
+div.wrappToTenders > article hgroup > h3 {
+    margin-bottom: 0px;
+}
+
+div.wrappToTenders > article hgroup > h4 {
+    margin-bottom: 0px;
+}
+
+div.wrappToTenders article.item div.articleText {
+    margin-top: -10px;
+}
+
+div.wrappToTenders article.item div.articleWrapp {
+    max-height: 120px;
+    padding-top: 5px;
+}
+
+section > div.innerP aside > div.blockSearch {
+    color: #8f8f8f;
+    padding: 16px 13px;
+    border: 1px solid #9f9f9f;
+}
+
+section > div.innerP aside > div.blockSearch > div.title{
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 21px;
+}
+
+section > div.innerP aside > div.blockSearch input {
+    width: 163px;
+    color: #8f8f8f;
+}
+
+section > div.innerP aside > div.blockSearch input[type='submit'] {
+    color: #fff;
+}
+
+section > div.innerP aside > div.blockSearch form.search > div {
+    margin-bottom: 10px;
+}
+
+section > div.innerP aside > div.blockSearch form.search > div:last-child {
+    margin-bottom: 0px;
+}
+
+section > div.innerP aside > div.blockSearch div.checkbox > label {
+    font-size: 11px;
+}
+
+section > div.innerP aside > div.blockSearch div.checkbox > input {
+    width: auto;
+}
+
+div.innerP > div.InnerWrappToMain article form > section div.width50 > input {
+    width: 170px;
+}
+
+div.innerP > div.InnerWrappToMain article form > section div.width50 {
+    width: 191px;
+    float: left;
+}
+
+div.innerP > div.InnerWrappToMain article.registration form > section input {
+    color: #8f8f8f;
+    width: 361px;
+}
+
+div.innerP > div.InnerWrappToMain article.registration aside {
+    min-height: 213px;
+}
+
+div.innerP > div.InnerWrappToMain article.registration form > aside input.submit {
+    right: 3px;
+}
+
+div.innerP > div.InnerWrappToMain article.registration form div.checkbox > input {
+    width: auto;
+    float: left;
+}
+
+div.innerP > div.InnerWrappToMain article.registration form div.checkbox > label {
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

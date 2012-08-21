@@ -12,6 +12,7 @@ Yii::import('zii.widgets.CMenu');
 class SkodaMenu extends CMenu {
 
     public $activateItemsOuter = true;
+    public $separator;
 
     //need to include this for our function to run
     public function run()
@@ -64,7 +65,10 @@ class SkodaMenu extends CMenu {
 
             if (isset ($item['url'])) {
                 $label = $this->linkLabelWrapper === null ? $item['label'] : '<' . $this->linkLabelWrapper . '>' . $item['label'] . '</' . $this->linkLabelWrapper . '>';
-                $menu = CHtml :: link($label, $item['url'], isset ($item['linkOptions']) ? $item['linkOptions'] : array());
+
+                $separator = ($count != $n) ? $this->separator : "";
+
+                $menu = CHtml :: link($label, $item['url'], isset ($item['linkOptions']) ? $item['linkOptions'] : array()) . $separator;
             }
             else
                 $menu = CHtml :: tag('span', isset ($item['linkOptions']) ? $item['linkOptions'] : array(), $item['label']);

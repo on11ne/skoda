@@ -40,7 +40,7 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
                     <li><span>Добавить фото</span></li>
                 </menu>-->
             </div>
-            <section>
+            <section class="width585">
                 <article>
                     <div class="desc">
                         Заголовок для статьи должен содержать не более 19 символов (включая пробелы).<br/>

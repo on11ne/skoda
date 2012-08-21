@@ -40,6 +40,48 @@ input {
 	transition: all 0.5s ease;
 }
 
+input[type='submit']::-moz-focus-inner{padding:0;border:0}
+@-moz-document url-prefix() {
+	.submit {padding-bottom: 3px !important;}
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+    box-shadow: inset 2px 3px 12px -5px black;
+    border: 1px solid #9F9F9F;
+    padding-left: 5px;
+    height: 23px;
+}
+
+input[type='checkbox'] {
+    box-shadow: inset 2px 3px 12px -5px black;
+    border: 1px solid #9F9F9F;
+    padding-left: 5px;
+    margin-right: 3px;
+    height: auto;
+}
+
+input[type='submit']{
+    color: white;
+    cursor: pointer;
+    height: 25px;
+    padding: 0;
+    border: none;
+    line-height: 23px;
+    background: #4BA82E url(../images/arrowToSubButt.png) no-repeat center right;
+    background-position: 92% 50%;
+    box-shadow: none;
+    width: auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+
+input[type='submit']:hover{
+    background-color: #093;
+}
+
 div {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -289,6 +331,7 @@ div.InnerWrappToMain{
 
 div.InnerWrappToMain > div{
     height: 185px;
+    overflow: hidden;
     background-color: #f2f2f2;
 }
 
@@ -376,16 +419,17 @@ div.blockToNews > div.item {
 }
 
 div.blockToNews > div.allNewsLink {
-    margin-top: 9px;
+    margin-top: 23px;
 }
 
 div.blockToNews > div.allNewsLink > a{
     font-size: 12px;
 }
 
+div.news > section > article.innerNews div.allNewsLink > img,
 div.blockToNews > div.allNewsLink > img,
 div.blockToSlider div.items > div.item > div.desc > div.link img{
-    margin-top: 4px;
+    margin-top: 2px;
     margin-right: 8px;
     vertical-align: top;
 }
@@ -396,10 +440,14 @@ div.blockToSlider div.items > div.item{
     width: 255px;
 }
 
+div.news article > figure > div.imgWrapp,
+div.wrappToTenders article > figure > div.imgWrapp,
 div.blockToSlider div.items > div.item > div.imgWrapp{
     position: relative;
 }
 
+div.news article > figure > div.imgWrapp a > div,
+div.wrappToTenders article > figure > div.imgWrapp a > div,
 div.blockToSlider div.items > div.item > div.imgWrapp a > div{
     color: #f5f5f5;
     bottom: 0px;
@@ -427,12 +475,16 @@ div.blockToSlider div.items > div.item > div.imgWrapp a > div.raiting{
    background-color: rgba(60, 114, 36, 0.67);
 }
 
+div.news article > figure > div.imgWrapp a > div.likes,
+div.wrappToTenders article > figure > div.imgWrapp a > div.likes,
 div.blockToSlider div.items > div.item > div.imgWrapp a > div.likes{
    right: 0px;
    width: 61px;
    background-color: #000;
 }
 
+div.news article > figure > div.imgWrapp a > div > img,
+div.wrappToTenders article > figure > div.imgWrapp a > div > img,
 div.blockToSlider div.items > div.item > div.imgWrapp a > div > img{
     margin-top: 5px;
     margin-right: 3px;
@@ -499,11 +551,12 @@ div.blockToSlider div.items > div.item:last-child {
 
 #footer > div#wrapper > div.leftPart {
     width: 215px;
+    margin-top: 12px;
 }
 
 #footer > div#wrapper > div.middPart {
     width: 425px;
-    margin-top: 18px;
+    margin-top: 25px;
 }
 
 #footer > div#wrapper > div.rightpart {
@@ -516,6 +569,7 @@ div.blockToSlider div.items > div.item:last-child {
 
 #footer > div#wrapper > div.rightpart > div.wrapp > div:first-child {
     float: left;
+    margin-top: 2px;
 }
 
 #footer > div#wrapper > div.rightpart > div.wrapp > div:last-child {

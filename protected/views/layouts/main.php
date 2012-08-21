@@ -8,6 +8,7 @@
         Yii::app()->clientScript->registerPackage('fancybox');
         Yii::app()->clientScript->registerScriptFile('/assets/js/flash-messages.js', CClientScript::POS_BEGIN);
     ?>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/skoda_favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="keywords" content="Шкода, Skoda, Октавия, Octavia, Фабия, Fabia, СуперБ, SuperB, Yeti, Roomster, New Octavia, Новая, дилеры, " />
     <meta name="description" content="Информация о деятельности компании, История, технологии. Описание модельного ряда, характеристики, Фотогалерея, Цены. Официальные дилеры в России. " />
@@ -46,6 +47,7 @@ if ($flashMessages)
             <?php
             $this->widget('application.components.SkodaMenu', array(
                 'activateItemsOuter'=>false,
+                'separator'=>'<span> | </span>',
                 'linkLabelWrapper' => null,
                 'activateItems' => true,
                 'id' => '',

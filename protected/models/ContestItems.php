@@ -43,19 +43,18 @@ class ContestItems extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, user_id, full_text, images', 'required'),
+			array('title, user_id, full_text', 'required'),
 			array('contest_id, user_id, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max' => 19),
             array('full_text', 'length', 'max' => 1500, 'min' => 300),
-            array('images', 'file', 'maxFiles' => 5, 'maxSize' => 3000000, 'types' => 'jpg, png, gif'),
-			array('full_text, videos', 'safe'),
-            array('user_id', 'unique', 'criteria' => array(
+			array('full_text', 'safe'),
+            /*array('user_id', 'unique', 'criteria' => array(
                 'condition' => 'contest_id=:cid',
                 'params' => array(':cid' => Yii::app()->params['contest_id'])), 'message' => 'Вы уже размещали работу в данном конкурсе'
-            ),
+            ),*/
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, full_text, images, videos, contest_id, user_id, status, created', 'safe', 'on'=>'search'),
+			array('id, title, full_text, contest_id, user_id, status, created', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -155,7 +154,20 @@ class ContestItems extends CActiveRecord
             'contest' => array(self::BELONGS_TO, 'Contest', 'contest_id'),
             'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
             'images' => array(self::HAS_MANY, 'Images', 'contest_item_id'),
-            'votes' => array(self::HAS_MANY, 'Votes', 'contest_item_id'),
+            'votes_count' => array(self::STAT, 'Votes', 'contest_item_id'),
+        );
+    }
+
+
+    public function scopes()
+    {
+        return array(
+            'published'=>array(
+                'condition'=>'status=1',
+            ),
+            'current'=>array(
+                'condition'=>'contest_id=' . Yii::app()->params['contest_id']
+            ),
         );
     }
 

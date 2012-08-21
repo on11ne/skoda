@@ -1,0 +1,37 @@
+/*body {
+	font: 0.8em/21px arial,sans-serif;
+}
+
+.checkbox, .radio {
+	width: 19px;
+	height: 25px;
+	padding: 0 5px 0 0;
+	background: url(checkbox.png) no-repeat;
+	display: block;
+	clear: left;
+	float: left;
+}
+.radio {
+	background: url(radio.png) no-repeat;
+}*/
+a.blockSort1, a.blockSort2 {
+	width: 100px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	height: 25px;
+	padding: 0 24px 0 15px;
+	color: #fff;
+	font: 12px/21px arial,sans-serif;
+    background: #555 url(../images/arrowToUpldButt.png) no-repeat center right;
+    background-position: 93% 50%;
+	overflow: hidden;
+    line-height: 25px;
+    display: block;
+    float: left;
+}
+
+a.blockSort2 {
+    margin-left: 10px;
+}
+
+a.blockSort1:hover, a.blockSort2:hover {
+    text-decoration: none;
+}

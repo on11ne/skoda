@@ -12,8 +12,7 @@ $current_contest = Contests::model()->find(array(
 if($current_contest == null)
     throw new CHttpException(404, 'Нет активных акций');
 
-$contest_items = ContestItems::model()->with(array('images', 'votes'))->findAll(array(
-    "condition" => "status=1",
+$contest_items = ContestItems::model()->with(array('images', 'votes_count'))->published()->current()->findAll(array(
     "limit" => 10
 ));
 
@@ -24,7 +23,7 @@ $('.blockToSlider').bxSlider({
     nextText: '',
     prevText: '',
     prevImage: '/assets/images/butt_prev.png',
-    nextImage: '/assets/images/butt_next.png',
+    nextImage: '/assets/images/butt_next.png'
 });
 $('img.vote_control').hover(function(){
     $(this).animate({opacity: 0.5}, function() {
@@ -77,8 +76,8 @@ $('img.vote_control').hover(function(){
                     <div class="imgWrapp">
                         <a href="">
                             <img src="<?php echo $image->thumb_path; ?>" alt="<?php echo $contest_item->title; ?>" />
-                            <div class="raiting"><img src="/assets/images/icons/rating.png" alt="Добавить фото" />
-                                10
+                            <div class="raiting"><img src="/assets/images/icons/rating.png" alt="" />
+
                             </div>
                             <div class="likes">
                                 <img
@@ -89,7 +88,7 @@ $('img.vote_control').hover(function(){
                                     <?php endif; ?>
 
                                     src="/assets/images/icons/likes.png" alt=""/>
-                            <?php echo count($contest_item->votes); ?></div>
+                            <?php echo $contest_item->votes_count; ?></div>
                         </a>
                     </div>
                     <div class="desc">

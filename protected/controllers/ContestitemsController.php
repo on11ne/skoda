@@ -41,6 +41,43 @@ class ContestitemsController extends Controller
         );
     }
 
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionIndex()
+    {
+        $criteria = new CDbCriteria();
+        $count = ContestItems::model()->published()->current()->count();
+
+        $pages = new CPagination($count);
+        $pages->pageSize = 9;
+        $pages->applyLimit($criteria);
+
+        switch (Yii::app()->request->getParam('order', 'created')) {
+
+            case 'votes_count':
+                $criteria->select = '*, COUNT(tbl_votes.id) as votes_count';
+                $criteria->join = 'LEFT JOIN tbl_votes ON t.id = tbl_votes.contest_item_id';
+                $criteria->group = 't.id';
+                $order = 'votes_count';
+                break;
+
+            default:
+                $order = 'created';
+                break;
+        }
+
+        $criteria->order = $order . " DESC";
+        $contest_items = ContestItems::model()->with(array('images', 'votes_count'))->published()->current()->findAll($criteria);
+
+
+        $this->render('//contest_items/index', array(
+            'pages' => $pages,
+            'contest_items' => $contest_items
+        ));
+    }
+
 	public function actionAdd()
 	{
         $contest_item = new ContestItems();
