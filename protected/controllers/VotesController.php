@@ -50,8 +50,8 @@ class VotesController extends Controller
         if (isset($service)) {
 
             $authIdentity = Yii::app()->eauth->getIdentity($service);
-            $authIdentity->redirectUrl = Yii::app()->user->returnUrl;
-            $authIdentity->cancelUrl = $this->createAbsoluteUrl('site/index');
+            $authIdentity->redirectUrl = $this->createAbsoluteUrl('contestitems/index');
+            $authIdentity->cancelUrl = $this->createAbsoluteUrl('contestitems/index');
 
             if ($authIdentity->authenticate()) {
                 $identity = new EAuthUserIdentity($authIdentity);

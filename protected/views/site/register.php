@@ -81,6 +81,7 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
                                 array(
                                     //name of the html field that will be generated
                                     'name' => 'city_title',
+                                    'value' => 'введите первые буквы',
                                     //replace controller/action with real ids
                                     'url'=> array('cities/autoCompleteLookup'),
                                     'max' => 10, //specifies the max number of items to display
@@ -93,7 +94,10 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
 
                                     //any additional html attributes that go inside of
                                     //the input field can be defined here
-                                    'htmlOptions'=>array('size'=>'40'),
+                                    'htmlOptions'=>array(
+                                        'size' => '40',
+                                        'onfocus' => 'if(this.value=="введите первые буквы")this.value=""'
+                                    ),
 
                                     'methodChain'=>".result(function(event,item){\$(\"#Users_city\").val(item[1]);})",
                                 ));
@@ -108,6 +112,7 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
                                 array(
                                     //name of the html field that will be generated
                                     'name' => 'company_title',
+                                    'value' => 'введите первые буквы',
                                     //replace controller/action with real ids
                                     'url'=> array('companies/autoCompleteLookup'),
                                     'max' => 10, //specifies the max number of items to display
@@ -120,7 +125,10 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
 
                                     //any additional html attributes that go inside of
                                     //the input field can be defined here
-                                    'htmlOptions'=>array('size'=>'40'),
+                                    'htmlOptions'=>array(
+                                        'size'=>'40',
+                                        'onfocus' => 'if(this.value=="введите первые буквы")this.value=""'
+                                    ),
 
                                     'methodChain'=>".result(function(event,item){\$(\"#Users_company\").val(item[1]);})",
                                 ));

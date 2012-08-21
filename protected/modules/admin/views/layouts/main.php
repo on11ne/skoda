@@ -47,11 +47,12 @@ $cs->registerCssFile($baseUrl.'/js/fancybox/jquery.fancybox-1.3.1.css');
 
             <?php $this->widget('zii.widgets.CMenu',array(
                 'items'=>array(
+                    array('label'=>'Конкурсные работы', 'url'=>array('contestitems/index')),
                     array('label'=>'Новости', 'url'=>array('news/admin')),
                     array('label'=>'Города', 'url'=>array('cities/admin')),
                     array('label'=>'Голоса', 'url'=>array('votes/admin')),
                     array('label'=>'Пользователи', 'url'=>array('users/admin')),
-                    array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/gii/default/logout'))
+                    array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/gii/default/logout'))
                 ),
             )); ?>
 

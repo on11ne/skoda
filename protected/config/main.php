@@ -133,8 +133,8 @@ return array(
                     ),
                     'css' => array(
                         'source/jquery.fancybox.css',
-                        'source/jquery.fancybox-buttons.css',
-                        'source/jquery.fancybox-thumbs.css',
+                        'source/helpers/jquery.fancybox-buttons.css',
+                        'source/helpers/jquery.fancybox-thumbs.css',
                     ),
                 ),
                 'bxslider' => array(

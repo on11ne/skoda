@@ -156,7 +156,7 @@ class ContestItems extends CActiveRecord
     public function relations() {
 
         return array(
-            'contest' => array(self::BELONGS_TO, 'Contest', 'contest_id'),
+            'contests' => array(self::BELONGS_TO, 'Contests', 'contest_id'),
             'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
             'images' => array(self::HAS_MANY, 'Images', 'contest_item_id'),
             'votes_count' => array(self::STAT, 'Votes', 'contest_item_id'),
@@ -186,8 +186,10 @@ class ContestItems extends CActiveRecord
 			'title' => 'Название',
 			'full_text' => 'Текст',
 			'images' => 'Изображения',
-			'videos' => 'Видео',
+			'votes_count' => 'Голоса',
 			'contest_id' => 'Конкурс',
+            'contests' => 'Конкурс',
+            'user' => 'Пользователь',
 			'user_id' => 'Пользователь',
 			'status' => 'Состояние',
 			'created' => 'Создан',
