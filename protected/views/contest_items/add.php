@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 
 $current_contest = Contests::model()->find(array(
-    "select" => "id, title, description, index_image",
+    "select" => "id, title, description, inner_image",
     "condition" => "status=2", // active, not archived
     "limit" => 1
 ));
@@ -24,7 +24,7 @@ Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
             <div class="title">Добавить работу</div>
         </div>
     </div>
-    <img src="<?php echo $current_contest->index_image; ?>" alt="" />
+    <img src="<?php echo $current_contest->inner_image; ?>" alt="" />
 </div>
 <section>
     <div id="wrapper" class="WrappToMain innerP">

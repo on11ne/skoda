@@ -58,6 +58,7 @@ class Users extends CActiveRecord
             array('email', 'length', "min"=>3, "max"=>32),
             array('email', 'unique', 'className' => 'Users'),
 
+            array('password', 'length', "min" => 6, "max" => 32),
             array('password', 'match', 'pattern'=>'/^([a-z0-9_])+$/i'),
 
             array('first_name', 'match', 'pattern'=>'/^([\x{0410}-\x{042F}\s]){3,32}$/iu'),
@@ -87,7 +88,9 @@ class Users extends CActiveRecord
     public function relations() {
 
         return array(
-            'user_id' => array(self::HAS_ONE, 'ContestItems', 'user_id')
+            'user_id' => array(self::HAS_ONE, 'ContestItems', 'user_id'),
+            'city_object' => array(self::BELONGS_TO, 'Cities', 'city'),
+            'company_object' => array(self::BELONGS_TO, 'Companies', 'company'),
         );
     }
 
@@ -106,10 +109,12 @@ class Users extends CActiveRecord
 			'phone' => 'Телефон',
 			'company' => 'Компания',
 			'city' => 'Город',
+            'company_object' => 'Компания',
+            'city_object' => 'Город',
 			'position' => 'Должность',
 			'photo' => 'Фотография',
 			'activation' => 'Активационный ключ',
-			'status' => 'Status',
+			'status' => 'Статус',
 			'registered_date' => 'Дата регистрации',
 		);
 	}

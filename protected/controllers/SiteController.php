@@ -50,7 +50,7 @@ class SiteController extends Controller
                 'users'=>array('?'),
             ),
             array('allow', // registered
-                'actions'=>array('contact', 'logout'),
+                'actions'=>array('contact', 'logout', 'terms'),
                 'users'=>array('@'),
             ),
             array('deny',  // deny all users
@@ -69,6 +69,16 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
 	}
+
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionTerms()
+    {
+        $this->render('terms');
+    }
+
 
 	/**
 	 * This is the action to handle external exceptions.
@@ -138,6 +148,8 @@ class SiteController extends Controller
 
         $user = new Users;
 
+        $raw_password = '';
+
         // if it is ajax validation request
         if(isset($_POST['ajax']) && $_POST['ajax']==='register-form')
         {
@@ -153,20 +165,28 @@ class SiteController extends Controller
             //var_dump($user->attributes);
 
             $user->activation = sha1(mt_rand(10000, 99999) . time() . $user->email);
+
+            $raw_password = $user->password;
+
             $user->password = md5($user->password . Yii::app()->params['salt']);
             $user->status = Users::NOT_ACTIVATED;
 
-            $user->photo = CUploadedFile::getInstance($user, 'photo');
+//            var_dump(end(CUploadedFile::getInstancesByName('Users[photo]')));
+//            exit;
 
-            $image_name = uniqid() . "." . pathinfo($user->photo->name, PATHINFO_EXTENSION);
+            $user->photo = end(CUploadedFile::getInstancesByName('Users[photo]'));
 
-            $upload_directory = Yii::getPathOfAlias('webroot') . '/images/users/' . $image_name;
-            $web_directory = '/images/users/' . $image_name;
+            if($user->photo) {
+                $image_name = uniqid() . "." . pathinfo($user->photo->name, PATHINFO_EXTENSION);
 
-            if(!$user->photo->saveAs($upload_directory))
-                $user->addError('photo', 'Фотография не может быть сохранена');
+                $upload_directory = Yii::getPathOfAlias('webroot') . '/images/users/' . $image_name;
+                $web_directory = '/images/users/' . $image_name;
 
-            $user->photo = $image_name;
+                if(!$user->photo->saveAs($upload_directory))
+                    $user->addError('photo', 'Фотография не может быть сохранена');
+
+                $user->photo = $image_name;
+            }
 
             if($user->save()) {
 
@@ -189,7 +209,7 @@ class SiteController extends Controller
             }
         }
 
-        $user->password = '';
+        $user->password = $raw_password;
 
         $this->render('register', array('model' => $user));
 

@@ -1,56 +1,75 @@
 <?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
+$this->pageTitle = "Авторизация";
 
-$this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
-	'Login',
+    'Авторизация',
 );
+
+$current_contest = Contests::model()->find(array(
+    "select" => "id, title, description, inner_image",
+    "condition" => "status=2", // active, not archived
+    "limit" => 1
+));
+
+if($current_contest == null)
+    throw new CHttpException(404, 'Нет активных акций');
+
+Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
 ?>
-<div id="wrapper" class="WrappToMain">
-    <div class="InnerWrappToMain">
-        <h1>Login</h1>
 
-        <p>Please fill out the following form with your login credentials:</p>
-
-        <div class="form">
-        <?php $form=$this->beginWidget('CActiveForm', array(
-            'id'=>'login-form',
-            'enableClientValidation'=>true,
-            'clientOptions'=>array(
-                'validateOnSubmit'=>true,
-            ),
-        )); ?>
-
-            <p class="note">Fields with <span class="required">*</span> are required.</p>
-
-            <div class="row">
-                <?php echo $form->labelEx($model,'username'); ?>
-                <?php echo $form->textField($model,'username'); ?>
-                <?php echo $form->error($model,'username'); ?>
-            </div>
-
-            <div class="row">
-                <?php echo $form->labelEx($model,'password'); ?>
-                <?php echo $form->passwordField($model,'password'); ?>
-                <?php echo $form->error($model,'password'); ?>
-                <p class="hint">
-                    Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-                </p>
-            </div>
-
-            <div class="row rememberMe">
-                <?php echo $form->checkBox($model,'rememberMe'); ?>
-                <?php echo $form->label($model,'rememberMe'); ?>
-                <?php echo $form->error($model,'rememberMe'); ?>
-            </div>
-
-            <div class="row buttons">
-                <?php echo CHtml::submitButton('Login'); ?>
-            </div>
-
-        <?php $this->endWidget(); ?>
-        </div><!-- form -->
+<div class="wrappToMSlidder">
+    <div class="descWrappMain descWrappMain_innerP">
+        <div class="descWrapp">
+            <div class="title">Авторизация</div>
+        </div>
     </div>
+    <img src="<?php echo $current_contest->inner_image; ?>" alt="" />
 </div>
+<section>
+    <div id="wrapper" class="WrappToMain innerP">
+        <div class="InnerWrappToMain">
+            <div class="breadcrumb">
+                <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+                    'links' => $this->breadcrumbs,
+                )); ?><!-- breadcrumbs -->
+            </div>
+            <section>
+                <article>
+                    <?php $form=$this->beginWidget('CActiveForm', array(
+                        'id'=>'login-form',
+                        'enableClientValidation'=>true,
+                        'htmlOptions' => array('class' => 'login'),
+                        'clientOptions'=>array(
+                            'validateOnSubmit'=>true,
+                        ),
+                    )); ?>
+                        <div class="email">
+                            <?php echo $form->labelEx($model,'username'); ?>
+                            <?php echo $form->textField($model,'username'); ?>
+                            <?php echo $form->error($model,'username'); ?>
+                        </div>
+                        <div class="pass">
+                            <?php echo $form->labelEx($model,'password'); ?>
+                            <?php echo $form->passwordField($model,'password'); ?>
+                            <?php echo $form->error($model,'password'); ?>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="checkbox">
+                            <?php echo $form->checkBox($model,'rememberMe'); ?>
+                            <?php echo $form->label($model,'rememberMe'); ?>
+                            <?php echo $form->error($model,'rememberMe'); ?>
+                        </div>
+                        <div class="submit">
+                            <?php echo CHtml::submitButton('Войти'); ?>
+                        </div>
+                        <div class="clr"></div>
+                    <?php $this->endWidget(); ?>
+                </article>
+            </section>
+            <aside>
+                &nbsp;
+            </aside>
+            <div class="clr"></div>
+        </div>
+    </div>
+</section>

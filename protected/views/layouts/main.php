@@ -95,7 +95,7 @@ if ($flashMessages)
                     array('label' => 'Голосование', 'url' => array('contestitems/index'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => 'Призы', 'url' => array('site/prizes')),
                     array('label' => 'Добавить работу', 'url' => array('contestitems/add'), 'visible' => !Yii::app()->user->isGuest),
-                    array('label' => 'Условия', 'url' => array('contests/rules'), 'visible' => !Yii::app()->user->isGuest),
+                    array('label' => 'Условия', 'url' => array('site/terms'), 'visible' => !Yii::app()->user->isGuest),
                 ),
             ));
             ?>

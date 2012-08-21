@@ -6,7 +6,7 @@ class NewsController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/main';
 
 	/**
 	 * @return array action filters
@@ -51,7 +51,7 @@ class NewsController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'news_item' => $this->loadModel($id),
 		));
 	}
 
@@ -127,9 +127,24 @@ class NewsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('News');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+        $criteria = new CDbCriteria();
+
+        $criteria->compare('status', 1);
+
+        if(isset($_GET['month']) && intval($_GET['month']) <= 12 && intval($_GET['month']) >= 1)
+            $criteria->addBetweenCondition( 'created',
+                '2012-' . sprintf('%02d', intval($_GET['month'])) . "-01 00:00:00",
+                '2012-' . sprintf('%02d', intval($_GET['month'])+1) . "-01 00:00:00");
+        else
+            $criteria->addBetweenCondition( 'created',
+                '2012-' . date('m') . "-01 00:00:00",
+                date('Y-m-d H:i:s', strtotime('+1 month', strtotime('2012-' . date('m') . "-01 00:00:00"))));
+
+		$dataProvider = new CActiveDataProvider('News');
+        $dataProvider->criteria = $criteria;
+
+		$this->render('index', array(
+			'dataProvider' => $dataProvider,
 		));
 	}
 

@@ -72,8 +72,9 @@ class Votes extends CActiveRecord
 			'id' => 'ID',
 			'source' => 'Социальная сеть',
 			'contest_item_id' => 'Конкурсная работа',
-			'user_identity' => 'ID пользователья',
+			'user_identity' => 'ID пользователя',
 			'created' => 'Добавлен',
+            'contest_item' => 'Конкурсная работа',
 		);
 	}
 
@@ -95,7 +96,7 @@ class Votes extends CActiveRecord
 		$criteria->compare('created',$this->created,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 }

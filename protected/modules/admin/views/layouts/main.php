@@ -27,6 +27,16 @@ $cs->registerCssFile($baseUrl.'/js/fancybox/jquery.fancybox-1.3.1.css');
 
     <script type="text/javascript" src="<?php echo $this->module->assetsUrl; ?>/js/main.js"></script>
 
+    <style type="text/css">
+        div.top-menus li {
+            display: block;
+            float: left;
+            margin-left: 10px;
+            background: none repeat scroll 0 0 #EFFDFF;
+            text-align: center;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -34,12 +44,17 @@ $cs->registerCssFile($baseUrl.'/js/fancybox/jquery.fancybox-1.3.1.css');
 <div class="container" id="page">
     <div id="header">
         <div class="top-menus">
-            <?php echo CHtml::link('help','http://www.yiiframework.com/doc/guide/topics.gii'); ?> |
-            <?php echo CHtml::link('webapp',Yii::app()->homeUrl); ?> |
-            <a href="http://www.yiiframework.com">yii</a>
-            <?php if(!Yii::app()->user->isGuest): ?>
-            | <?php echo CHtml::link('logout',array('/gii/default/logout')); ?>
-            <?php endif; ?>
+
+            <?php $this->widget('zii.widgets.CMenu',array(
+                'items'=>array(
+                    array('label'=>'Новости', 'url'=>array('news/admin')),
+                    array('label'=>'Города', 'url'=>array('cities/admin')),
+                    array('label'=>'Голоса', 'url'=>array('votes/admin')),
+                    array('label'=>'Пользователи', 'url'=>array('users/admin')),
+                    array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/gii/default/logout'))
+                ),
+            )); ?>
+
         </div>
         <div id="logo"><?php echo CHtml::link(CHtml::image($this->module->assetsUrl.'/images/logo.jpg'),array('/admin')); ?></div>
     </div><!-- header -->

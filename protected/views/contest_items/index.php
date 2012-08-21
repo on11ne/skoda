@@ -69,7 +69,7 @@ $('img.vote_control').hover(function(){
 
 <div class="wrappToTenders">
     <article class="item">
-        Работы не найдены
+        <strong>Работы не найдены</strong>
     </article>
 </div>
 
@@ -141,20 +141,109 @@ $('img.vote_control').hover(function(){
 <aside>
     <div class="blockSearch">
         <div class="title">Поиск</div>
-        <form class="search">
+        <?php
+        $model = new ContestItems();
+        $form = $this->beginWidget('CActiveForm', array(
+            'id' => 'search',
+            'action' => Yii::app()->createUrl('contestitems/search'),
+            'enableAjaxValidation' => false,
+            'htmlOptions' => array(
+                'class' => 'search',
+                'method' => 'post',
+                'onsubmit' => "if ($('#ContestItems_title').val()=='Название работы') $('#ContestItems_title').val('');"
+            )
+        )); ?>
             <div>
-                <input name="search1" maxlength="20" type="text" value="Имя конкурсанта" onblur="if (this.value=='') this.value='Имя конкурсанта';" onfocus="if (this.value=='Имя конкурсанта') this.value='';" />
+                <?php
+
+                    $this->widget('CAutoComplete',
+                    array(
+                        //name of the html field that will be generated
+                        'name' => 'username',
+                        'value' => 'Имя конкурсанта',
+                        //replace controller/action with real ids
+                        'url'=> array('users/autoCompleteLookup'),
+                        'max' => 10,
+
+                        'minChars' => 2,
+                        'delay' => 500, //number of milliseconds before lookup occurs
+                        'matchCase' => false, //match case when performing a lookup?
+
+                        //any additional html attributes that go inside of
+                        //the input field can be defined here
+                        'htmlOptions' => array(
+                            'maxlength' => 20,
+                            'onblur' => "if (this.value=='') this.value='Имя конкурсанта';",
+                            'onfocus' => "if (this.value=='Имя конкурсанта') this.value='';"
+                        ),
+
+                        'methodChain'=>".result(function(event,item){\$(\"#ContestItems_user_id\").val(item[1]);})",
+                    ));
+                    echo $form->hiddenField($model, "user_id");
+                ?>
             </div>
             <div>
-                <input name="search2" maxlength="20" type="text" value="Название работы" onblur="if (this.value=='') this.value='Название работы';" onfocus="if (this.value=='Название работы') this.value='';" />
+                <?php
+                    echo $form->textField($model, "title", array(
+                        'value' => 'Название работы',
+                        'maxlength' => 20,
+                        'onblur' => "if (this.value=='') this.value='Название работы';",
+                        'onfocus' => "if (this.value=='Название работы') this.value='';"
+                    ));
+                ?>
             </div>
             <div>
-                <input name="search3" maxlength="20" type="text" value="12 июля-12августа" onblur="if (this.value=='') this.value='12 июля-12августа';" onfocus="if (this.value=='12 июля-12августа') this.value='';" />
+                Период размещения
+            </div>
+            <div>
+                <?php
+
+                $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name'=>'ContestItems[created_from]',
+                    'model' => $model,
+                    'language'=>'ru',
+                    // additional javascript options for the date picker plugin
+                    'options'=>array(
+                        'showAnim' => 'fold',
+                        'dateFormat' => 'yy-mm-dd',
+                        'changeMonth' => 'true',
+                        'showButtonPanel' => 'true',
+                    ),
+                    'htmlOptions' => array(
+                        'maxlength' => 12,
+                        'onblur' => "if (this.value=='') this.value='';",
+                        'onfocus' => "if (this.value=='') this.value='';",
+                        'style' => "width: 65px;"
+                    ),
+                ));
+                ?>
+                 до
+                <?php
+
+                $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name'=>'ContestItems[created_to]',
+                    'model' => $model,
+                    'language'=>'ru',
+                    // additional javascript options for the date picker plugin
+                    'options'=>array(
+                        'showAnim' => 'fold',
+                        'dateFormat' => 'yy-mm-dd',
+                        'changeMonth' => 'true',
+                        'showButtonPanel' => 'true',
+                    ),
+                    'htmlOptions' => array(
+                        'maxlength' => 12,
+                        'onblur' => "if (this.value=='') this.value='';",
+                        'onfocus' => "if (this.value=='') this.value='';",
+                        'style' => "width: 65px;"
+                    ),
+                ));
+                ?>
             </div>
             <div>
                 <input name="submit" maxlength="20" type="submit" value="Искать работы" />
             </div>
-        </form>
+        <?php $this->endWidget(); ?>
     </div>
 </aside>
 <div class="clr"></div>

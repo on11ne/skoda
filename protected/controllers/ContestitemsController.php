@@ -28,7 +28,7 @@ class ContestitemsController extends Controller
                 'users'=>array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update', 'add'),
+                'actions'=>array('create','update', 'add', 'search'),
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -111,12 +111,45 @@ class ContestitemsController extends Controller
                 "Добавлена новая работа на модерацию",
                 $message);
 
+            $message = $this->renderPartial('//messages/new_contest_item_user', array(
+                'data' => $contest_item), true);
+
+            Mailer::sendToUser(
+                $contest_item->user->email,
+                $contest_item->surname . " " . $contest_item->first_name,
+                "Добавлена новая работа на модерацию",
+                $message);
+
             Yii::app()->user->setFlash('success', "Спасибо!<br/>Ваша работа отправлена на модерацию");
             $this->redirect(array('site/index'));
         }
 
         $this->render('//contest_items/add', array('model' => $contest_item));
 	}
+
+
+    public function actionSearch()
+    {
+        $contest_item = new ContestItems();
+
+        $dataProvider = null;
+
+        if(isset($_POST['ContestItems'])) {
+
+            $contest_item->attributes = $_POST['ContestItems'];
+            $contest_item->created_from = $_POST['ContestItems']['created_from'] . " 00:00:00";
+            $contest_item->created_to = $_POST['ContestItems']['created_to'] . " 23:59:59";
+
+            $dataProvider = $contest_item->search();
+
+            $this->render('//contest_items/index', array(
+                'pages' => $dataProvider->pagination,
+                'contest_items' => $dataProvider->getData()
+            ));
+        } else {
+            $this->redirect(array('contestitems/index'));
+        }
+    }
 
     function renderError($path, $model) {
 

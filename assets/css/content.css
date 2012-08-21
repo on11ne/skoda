@@ -112,7 +112,7 @@ div.innerP > div.InnerWrappToMain article form > aside input.submit,
 div.innerP > div.InnerWrappToMain article form.login div.submit input,
 div.innerP > div.InnerWrappToMain article form.restore div.submit input,
 div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
-#ContestItems_images_wrap {
+#ContestItems_images_wrap, #Users_photo_wrap {
     color: #fff;
     cursor: pointer;
     height: 25px;
@@ -162,7 +162,7 @@ div.innerP > div.InnerWrappToMain article form > aside input.submit:hover {
 }
 
 div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
-#ContestItems_images_wrap {
+#ContestItems_images_wrap, #Users_photo_wrap {
     width: 162px;
     border: none;
     text-align: left;
@@ -171,7 +171,7 @@ div.innerP > div.InnerWrappToMain article form > aside .qq-upload-button,
     background-position: 93% 50%;
 }
 
-#ContestItems_images_wrap {
+#ContestItems_images_wrap, #Users_photo_wrap {
     display: block;
     direction: ltr;
     /*overflow: hidden;
@@ -367,7 +367,7 @@ div.innerP div.navToConent ul li{
     float: left;
     display: block;
     list-style: none;
-    line-height: 29px;
+    line-height: 28px;
 }
 
 div.innerP div.navToConent ul li a{
@@ -427,12 +427,15 @@ div.innerP > div.news article {
 }
 
 div.wrappToTenders article > figure > div.imgWrapp a > img,
+aside div.othersJobs article > figure > div.imgWrapp a > img,
+aside div.othersJobs article > figure > div.imgWrapp,
 div.news article > figure > div.imgWrapp a > img,
 div.news article > figure > div.imgWrapp {
     width: 200px;
     height: 100px;
 }
 
+aside div.othersJobs article > figure > div.imgWrapp a > div.raiting,
 div.wrappToTenders article > figure > div.imgWrapp a > div.raiting,
 div.news article > figure > div.imgWrapp a > div.raiting{
    left: 0px;
@@ -469,6 +472,28 @@ div.sortToWorks > div.title{
     margin-right: 18px;
     margin-top: 5px;
     color: #555;
+}
+
+div.sortToWorks > div.blockSort1{
+    margin-right: 11px;
+}
+
+div.sortToWorks > div.blockSort1 .select {
+    width: 69px;
+}
+
+div.sortToWorks > div.blockSort1 select.styled {
+    color: #fff;
+    width: 108px !important;
+}
+
+div.sortToWorks > div.blockSort2 .select {
+    width: 122px;
+}
+
+div.sortToWorks > div.blockSort2 select.styled {
+    color: #fff;
+    width: 161px !important;
 }
 
 div.wrappToTenders > article.item {
@@ -539,6 +564,15 @@ section > div.innerP aside > div.blockSearch div.checkbox > input {
     width: auto;
 }
 
+div.innerP > div.InnerWrappToMain article form > section div.width30 > input {
+    width: 110px;
+}
+
+div.innerP > div.InnerWrappToMain article form > section div.width30 {
+    width: 125px;
+    float: left;
+}
+
 div.innerP > div.InnerWrappToMain article form > section div.width50 > input {
     width: 170px;
 }
@@ -567,18 +601,173 @@ div.innerP > div.InnerWrappToMain article.registration form div.checkbox > input
 }
 
 div.innerP > div.InnerWrappToMain article.registration form div.checkbox > label {
-    margin-top: 5px;
+    font-size: 12px;
+    margin-top: 4px;
+    float: left;
 }
 
+div.innerP > div.InnerWrappToMain article.registration form > aside > div.avatarToReg {
+    width: 183px;
+    height: 176px;
+    float: right;
+    margin-bottom: 40px;
+    margin-top: 24px;
+    margin-right: 3px;
+    background: url(../images/avatarBg.jpg) no-repeat;
+}
 
+div.innerP > div.InnerWrappToMain article form > section > div {
+    margin-bottom: 8px;
+}
 
+div.innerP > div.InnerWrappToMain article.registration form div.checkbox {
+    margin-top: 20px;
+}
 
+div.innerP > div.InnerWrappToMain article.registration form > aside .qq-upload-button {
+    margin-right: 3px;
+    float: right;
+    width: 183px;
+}
 
+div.innerP > div.InnerWrappToMain aside div.othersJobs > div.title {
+    color: #626262;
+    font-size: 25px;
+    line-height: 30px;
+}
 
+div.innerP > div.InnerWrappToMain aside.tender {
+    width: 200px;
+}
 
+aside div.othersJobs article > figure > figcaption {
+    margin-top: 10px;
+}
 
+aside div.othersJobs article > figure > figcaption > span {
+    float: right;
+    color: #aaaaaa;
+}
 
+div.InnerWrappToMain > section.tender > article > header > h2 {
+    float: left;
+    color: #626262;
+    font-size: 25px;
+    font-weight: 400;
+    margin-right: 19px;
+    margin-top: 4px;
+}
 
+div.InnerWrappToMain > section.tender > article > header > div.wrappToVote {
+    float: left;
+}
+
+header > div.wrappToVote > div{
+    float: left;
+}
+
+header > div.wrappToVote > div#count_vote{
+    height: 15px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 6px;
+    padding-left: 23px;
+    margin-right: 8px;
+    background: url(../images/icons/likes.png) no-repeat;
+}
+
+header > div.wrappToVote > div.ButtonVote a{
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    height: 25px;
+    padding: 0;
+    border: none;
+    line-height: 23px;
+    padding-left: 20px;
+    background: #4BA82E url(../images/arrowToSubButt.png) no-repeat center right;
+    background-position: 92% 50%;
+    box-shadow: none;
+    width: auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 25px;
+    text-decoration: none;
+}
+
+header > div.wrappToVote > div.ButtonVote a:hover{
+    background-color: #093;
+}
+
+section.tender article > figure.mainImg > img {
+    width: 640px;
+}
+
+section.tender article > figure.mainImg > figcaption {
+    margin-top: 10px;
+}
+
+figcaption.highslide-caption > div,
+section.tender article > figure.mainImg > figcaption > div {
+    float: left;
+    margin-left: 32px;
+}
+
+figcaption.highslide-caption > div:first-child,
+section.tender article > figure.mainImg > figcaption > div:first-child {
+    margin-left: 0px;
+}
+
+figcaption.highslide-caption > div span:first-child,
+section.tender article > figure.mainImg > figcaption > div span:first-child {
+    color: #6c6c6c;
+    font-size: 13px;
+}
+
+figcaption.highslide-caption > div span:last-child,
+section.tender article > figure.mainImg > figcaption > div span:last-child {
+    color: #353535;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+section.tender article > div.desc{
+    margin-top: 20px;
+    color: #585858 !important;
+    font-size: 13px !important;
+}
+
+figcaption.highslide-caption > div span:first-child {
+    color: #fff;
+}
+
+figcaption.highslide-caption > div span:last-child {
+    color: #BEB0B0;
+}
+
+.highslide-caption {
+    width: 655px;
+}
+
+section.tender article > figure.tumbImg {
+    margin-top: 35px;
+}
+
+section.tender article > figure.tumbImg > a > img {
+    width: 200px;
+    height: 100px;
+    border: none;
+    margin-right: 20px;
+}
+
+section.tender article > figure.tumbImg > a:last-child > img {
+     margin-right: 0px;
+}
+
+.highslide-image {
+    cursor: pointer;
+}
 
 
 

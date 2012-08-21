@@ -1,6 +1,6 @@
 <?php
 
-class NewsController extends Controller
+class CitiesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -15,6 +15,7 @@ class NewsController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -27,7 +28,7 @@ class NewsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index', 'view', 'autoCompleteLookup'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -43,6 +44,37 @@ class NewsController extends Controller
 			),
 		);
 	}
+
+    public function actionAutoCompleteLookup()
+    {
+        if(Yii::app()->request->isAjaxRequest && isset($_GET['q']))
+        {
+            /* q is the default GET variable name that is used by
+            / the autocomplete widget to pass in user input
+            */
+            $title = $_GET['q'];
+
+            // this was set with the "max" attribute of the CAutoComplete widget
+            $limit = min($_GET['limit'], 50);
+
+            $criteria = new CDbCriteria;
+            $criteria->condition = "title LIKE :title";
+            $criteria->params = array(":title"=>"%$title%");
+            $criteria->limit = $limit;
+
+            $citiesArray = Cities::model()->findAll($criteria);
+
+            $returnVal = '';
+
+            foreach($citiesArray as $city)
+            {
+                $returnVal .= $city->getAttribute('title').'|'
+                    .$city->getAttribute('id')."\n";
+            }
+
+            echo $returnVal;
+        }
+    }
 
 	/**
 	 * Displays a particular model.
@@ -61,37 +93,14 @@ class NewsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new News;
+		$model=new Cities;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['News']))
+		if(isset($_POST['Cities']))
 		{
-			$model->attributes=$_POST['News'];
-
-            $model->teaser_image = CUploadedFile::getInstance($model, 'teaser_image');
-
-            $image_name = uniqid() . "." . pathinfo($model->teaser_image->name, PATHINFO_EXTENSION);
-
-            $upload_directory = Yii::getPathOfAlias('webroot') . '/images/news/' . $image_name;
-
-
-            // optimizing original and creating thumb
-
-            if(!$model->teaser_image->saveAs($upload_directory))
-                $model->addError('photo', 'Фотография не может быть сохранена');
-
-            if(!($original = Yii::app()->image->load($upload_directory)))
-                $this->addError('images', 'Не возможно загрузить изображение ' . $model->teaser_image->name . ' для обработки');
-
-            $original->quality(80)->resize(200, 100, Image::WIDTH)->crop(200, 100);
-
-            if(!$original->save())
-                $this->addError('images', 'Не возможно сохранить изображение ' . $model->teaser_image->name);
-
-            $model->teaser_image = '/images/news/' . $image_name;
-
+			$model->attributes=$_POST['Cities'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -113,9 +122,9 @@ class NewsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['News']))
+		if(isset($_POST['Cities']))
 		{
-			$model->attributes=$_POST['News'];
+			$model->attributes=$_POST['Cities'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -132,17 +141,11 @@ class NewsController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -150,7 +153,7 @@ class NewsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('News');
+		$dataProvider=new CActiveDataProvider('Cities');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -161,11 +164,10 @@ class NewsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-
-		$model=new News('search');
+		$model=new Cities('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['News']))
-			$model->attributes=$_GET['News'];
+		if(isset($_GET['Cities']))
+			$model->attributes=$_GET['Cities'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -179,7 +181,7 @@ class NewsController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=News::model()->findByPk($id);
+		$model=Cities::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -191,7 +193,7 @@ class NewsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='news-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='cities-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

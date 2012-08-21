@@ -1,29 +1,78 @@
 <?php
-$this->breadcrumbs=array(
-	'News'=>array('index'),
-	$model->title,
+
+if($news_item == null)
+    throw new CHttpException(404, 'Новость не найдена');
+
+$this->pageTitle = $news_item->title . " | Новости";
+
+$this->breadcrumbs = array(
+    'Новости' => array('news/index'),
+    $news_item->title
 );
 
-$this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Create News', 'url'=>array('create')),
-	array('label'=>'Update News', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete News', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage News', 'url'=>array('admin')),
-);
+$current_contest = Contests::model()->find(array(
+    "select" => "id, title, description, inner_image",
+    "condition" => "status=2", // active, not archived
+    "limit" => 1
+));
+
+if($current_contest == null)
+    throw new CHttpException(404, 'Нет активных акций');
+
+Yii::app()->clientScript->registerCssFile("/assets/css/content.css");
+
 ?>
 
-<h1>View News #<?php echo $model->id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'title',
-		'teaser_text',
-		'teaser_image',
-		'created',
-		'status',
-		'full_text',
-	),
-)); ?>
+<div class="wrappToMSlidder">
+    <div class="descWrappMain descWrappMain_innerP">
+        <div class="descWrapp">
+            <div class="title"><?php echo $news_item->title; ?></div>
+        </div>
+    </div>
+    <img src="<?php echo $current_contest->inner_image; ?>" alt="" />
+</div>
+<section>
+    <div id="wrapper" class="WrappToMain innerP">
+        <div class="InnerWrappToMain news">
+            <div class="navToConent">
+                <ul>
+                    <li class="active"><a href="javascript:void(0);" title="<?php echo $news_item->title; ?>"><?php echo $news_item->title; ?></a></li>
+                </ul>
+            </div>
+            <div class="breadcrumb">
+                <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+                    'links' => $this->breadcrumbs,
+                )); ?><!-- breadcrumbs -->
+            </div>
+            <section>
+                <article class="innerNews">
+                    <figure>
+                        <div class="imgWrapp">
+                            <a href="javascript:void(0);" title="<?php echo $news_item->title; ?>">
+                                <img src="<?php echo $news_item->teaser_image; ?>" alt="<?php echo $news_item->title; ?>">
+                            </a>
+                        </div>
+                    </figure>
+                    <div class="articleWrapp">
+                        <header>
+                            <hgroup>
+                                <h3><?php echo $news_item->title; ?></h3>
+                                <h4><?php echo strftime("%e %m %Y", strtotime($news_item->created)); ?></h4>
+                            </hgroup>
+                        </header>
+                        <div class="articleText">
+                            <p class="preText">
+                                <?php echo $news_item->teaser_text; ?>
+                            </p>
+                            <p class="fullText">
+                                <?php echo $news_item->full_text; ?>
+                            </p>
+                        </div>
+                        <div class="allNewsLink"><img src="/assets/images/icons/greenArrow.jpg" alt="Все новости"><a href="<?php Yii::app()->createUrl('news/index'); ?>" title="Все новости">Все новости</a></div>
+                    </div>
+                    <div class="clr"></div>
+                </article>
+            </section>
+        </div>
+    </div>
+</section>

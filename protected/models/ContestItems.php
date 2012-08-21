@@ -13,9 +13,14 @@
  * @property integer $user_id
  * @property integer $status
  * @property string $created
+ * @property string $created_from
+ * @property string $created_to
  */
 class ContestItems extends CActiveRecord
 {
+    public $created_from;
+    public $created_to;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -54,7 +59,7 @@ class ContestItems extends CActiveRecord
             ),*/
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, full_text, contest_id, user_id, status, created', 'safe', 'on'=>'search'),
+			array('title, user_id, created, created_from, created_to', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -186,6 +191,8 @@ class ContestItems extends CActiveRecord
 			'user_id' => 'Пользователь',
 			'status' => 'Состояние',
 			'created' => 'Создан',
+            'created_from' => 'Период с',
+            'created_to' => 'Период по',
 		);
 	}
 
@@ -200,18 +207,14 @@ class ContestItems extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('full_text',$this->full_text,true);
-		$criteria->compare('images',$this->images);
-		$criteria->compare('videos',$this->videos,true);
-		$criteria->compare('contest_id',$this->contest_id);
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('created',$this->created,true);
+		$criteria->compare('title', $this->title, true);
+		$criteria->compare('user_id', $this->user_id);
+		$criteria->compare('status', 1);
+
+        $criteria->addBetweenCondition('created', '' . $this->created_from . '', '' . $this->created_to . '');
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 }
